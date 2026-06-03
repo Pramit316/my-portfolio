@@ -1,7 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const SideMenu = ({ onClose }) => {
+const SideMenu = ({ onClose, onScroll }) => {
+  const handleLinkClick = (e, targetId) => {
+    if (onScroll) {
+      onScroll(e, targetId);
+    }
+    onClose();
+  };
+
   return (
     <div className="fixed inset-0 z-50 md:hidden">
       {/* Backdrop (click outside to close) */}
@@ -31,10 +38,10 @@ const SideMenu = ({ onClose }) => {
 
         {/* Links */}
         <nav className="flex flex-col">
-          <a href="#hero" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-cyan-500/15 px-4 py-3 transition">Home</a>
-          <a href="#journey" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Journey</a>
-          <a href="#project" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Projects</a>
-          <a href="#contact" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Contact</a>
+          <a href="#hero" onClick={(e) => handleLinkClick(e, "hero")} className="!text-slate-200 hover:!text-white hover:bg-cyan-500/15 px-4 py-3 transition">Home</a>
+          <a href="#journey" onClick={(e) => handleLinkClick(e, "journey")} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Journey</a>
+          <a href="#project" onClick={(e) => handleLinkClick(e, "project")} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Projects</a>
+          <a href="#contact" onClick={(e) => handleLinkClick(e, "contact")} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Contact</a>
         </nav>
       </aside>
     </div>
