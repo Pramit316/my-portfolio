@@ -44,12 +44,12 @@ const AppBar = () => {
   ];
 
     return (
-        <header className="fixed mt-4 w-full py-2 px-4 bg-[#0f0f1a]/80 border border-violet-500/15 md:backdrop-blur-md rounded-full z-100 shadow-lg shadow-violet-950/30">
+        <header className="fixed mt-4 w-full py-2 px-4 bg-[#090f24]/80 border border-cyan-500/15 md:backdrop-blur-md rounded-full z-100 shadow-lg shadow-cyan-950/30">
             <nav className = "flex justify-between items-center px-4 sm:px-6 lg:px-12 ">
 
                 {/* Left: Logo / Portfolio */}
                 <button className = "flex items-center !bg-transparent">
-                    <div className="px-2 mr-2 bg-gradient-to-br from-violet-500 to-fuchsia-600 rounded-lg text-3xl md:text-xl font-bold">P</div>
+                    <div className="px-2 mr-2 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg text-3xl md:text-xl font-bold">P</div>
                     <div className = "text-2xl md:text-xl">Portfolio</div>
                 </button>
 
@@ -62,7 +62,7 @@ const AppBar = () => {
               className={`relative px-4 py-2 !rounded-xl !bg-transparent !text-white transition ${
                 activeSection === item.id
                   ?
-                    "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:rounded-full after:bg-[linear-gradient(90deg,#a78bfa,#e879f9,#22d3ee,#a78bfa)] after:bg-[length:200%_100%] after:animate-[shimmer_2s_linear_infinite]"
+                    "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:rounded-full after:bg-[linear-gradient(90deg,#06b6d4,#3b82f6,#10b981,#06b6d4)] after:bg-[length:200%_100%] after:animate-[shimmer_2s_linear_infinite]"
                   : "hover:text-cyan-300"
               }`}
             >
@@ -77,7 +77,7 @@ const AppBar = () => {
                 </button>
 
                 {/* Let's Talk Button */}
-                <a href="#contact" className="hidden md:inline bg-gradient-to-r from-violet-500 to-fuchsia-600 rounded-full px-5 py-2 !text-sm font-medium text-white hover:from-violet-400 hover:to-fuchsia-500 transition">Lets Talk</a>
+                <a href="#contact" className="hidden md:inline bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full px-5 py-2 !text-sm font-medium text-white hover:from-cyan-400 hover:to-blue-500 transition shadow-lg shadow-cyan-500/20">Lets Talk</a>
             </nav>
 
             {open && (

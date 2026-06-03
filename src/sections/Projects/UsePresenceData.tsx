@@ -23,10 +23,10 @@ export default function UsePresenceData() {
   const color = "#FFD700";
 
   return (
-    <section id="project" className="flex justify-center min-h-[700px] bg-gradient-to-b from-[#0f0f1a] via-[#0a0a12] to-[#0f0f1a] py-12">
+    <section id="project" className="flex justify-center min-h-[700px] bg-gradient-to-b from-[#090f24] via-[#040712] to-[#090f24] py-12">
       <div className="text-center mt-24 max-w-screen-2xl w-full px-4">
         <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Work</p>
-        <h2 className="mt-3 text-4xl font-semibold bg-gradient-to-r from-violet-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-transparent">
+        <h2 className="mt-3 text-4xl font-semibold bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-transparent">
           Featured Projects
         </h2>
         <p className="mt-6 text-slate-400 text-lg max-w-2xl mx-auto">
@@ -92,8 +92,8 @@ export default function UsePresenceData() {
               }}
               className={`h-2 rounded-full transition-all ${
                 i === selectedIndex
-                  ? "w-8 bg-gradient-to-r from-violet-400 to-cyan-400"
-                  : "w-2 bg-violet-500/40 hover:bg-violet-400/60"
+                  ? "w-8 bg-gradient-to-r from-cyan-400 to-blue-400"
+                  : "w-2 bg-cyan-500/40 hover:bg-cyan-400/60"
               }`}
             />
           ))}

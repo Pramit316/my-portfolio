@@ -19,7 +19,7 @@ const JOURNEY_STAGES = [
     description:
       "Where it all started — drawing, reading, sports, and games shaped how I learn and build today.",
     icon: FaPencilAlt,
-    accent: "from-violet-400 to-fuchsia-500",
+    accent: "from-teal-400 to-cyan-500",
     chips: ["Creativity", "Sports", "Games"],
   },
   {
@@ -37,7 +37,7 @@ const JOURNEY_STAGES = [
     description:
       "Discovered game development through Unity and pixel art — my first taste of building digital worlds.",
     icon: FaUnity,
-    accent: "from-indigo-400 to-violet-500",
+    accent: "from-blue-400 to-indigo-500",
     chips: ["Unity", "Pixel Art", "GameBanana"],
   },
   {
@@ -55,7 +55,7 @@ const JOURNEY_STAGES = [
     description:
       "First steps into software — Android development with Kotlin opened the door to mobile engineering.",
     icon: SiKotlin,
-    accent: "from-purple-400 to-pink-500",
+    accent: "from-indigo-400 to-blue-500",
     chips: ["Kotlin", "Android"],
   },
   {
@@ -100,7 +100,7 @@ const JOURNEY_STAGES = [
     description:
       "Still exploring — side projects, tutorials, and new stacks to ship better products.",
     icon: FiYoutube,
-    accent: "from-fuchsia-400 to-violet-500",
+    accent: "from-teal-400 to-emerald-500",
     chips: ["Side Projects", "Tutorials", "Growth"],
   },
 ];
@@ -126,7 +126,7 @@ const SCATTERED_LIFE_ICONS = [
   { id: "football-2", Icon: IoMdFootball, color: "text-slate-300/75", size: "text-2xl", rotate: "rotate-12", top: "28%", left: "22%", delay: "2.4s", opacity: bright(0.14) },
 
   // Phase 2
-  { id: "controller", Icon: IoGameControllerOutline, color: "text-violet-400/85", size: "text-3xl md:text-4xl", rotate: "-rotate-12", top: "36%", left: "5%", delay: "1s", opacity: bright(0.22) },
+  { id: "controller", Icon: IoGameControllerOutline, color: "text-cyan-400/85", size: "text-3xl md:text-4xl", rotate: "-rotate-12", top: "36%", left: "5%", delay: "1s", opacity: bright(0.22) },
   { id: "calculus", Icon: TbMathIntegralX, color: "text-cyan-400/85", size: "text-4xl md:text-5xl", rotate: "rotate-6", top: "38%", left: "86%", delay: "1.8s", opacity: bright(0.2) },
   { id: "calculator", Icon: CiCalculator1, color: "text-indigo-400/80", size: "text-3xl md:text-5xl", rotate: "-rotate-6", top: "48%", left: "10%", delay: "0.6s", opacity: bright(0.2) },
   { id: "corona", Icon: FaVirusCovid, color: "text-red-400/80", size: "text-3xl md:text-4xl", rotate: "rotate-12", top: "50%", left: "90%", delay: "2.2s", opacity: bright(0.2) },
@@ -134,7 +134,7 @@ const SCATTERED_LIFE_ICONS = [
   // Phase 3
   { id: "computer-1", Icon: FaComputer, color: "text-blue-300/80", size: "text-3xl md:text-4xl", rotate: "-rotate-6", top: "56%", left: "8%", delay: "1.4s", opacity: bright(0.2) },
   { id: "microchip-1", Icon: GiMicrochip, color: "text-indigo-400/80", size: "text-3xl md:text-4xl", rotate: "rotate-12", top: "60%", left: "84%", delay: "0.2s", opacity: bright(0.22) },
-  { id: "circuitry-1", Icon: PiCircuitry, color: "text-violet-400/75", size: "text-3xl", rotate: "rotate-[15deg]", top: "68%", left: "12%", delay: "2.6s", opacity: bright(0.18) },
+  { id: "circuitry-1", Icon: PiCircuitry, color: "text-blue-400/75", size: "text-3xl", rotate: "rotate-[15deg]", top: "68%", left: "12%", delay: "2.6s", opacity: bright(0.18) },
   { id: "computer-2", Icon: FaComputer, color: "text-sky-300/75", size: "text-2xl", rotate: "rotate-6", top: "72%", left: "80%", delay: "1.1s", opacity: bright(0.15) },
   { id: "microchip-2", Icon: GiMicrochip, color: "text-emerald-400/75", size: "text-2xl md:text-3xl", rotate: "-rotate-12", top: "78%", left: "6%", delay: "1.9s", opacity: bright(0.16) },
   { id: "circuitry-2", Icon: PiCircuitry, color: "text-teal-400/75", size: "text-3xl", rotate: "rotate-6", top: "82%", left: "92%", delay: "0.9s", opacity: bright(0.17) },
@@ -172,7 +172,7 @@ function ScatteredLifeIcons() {
       {SCATTER_STARS.map((star, i) => (
         <span
           key={`star-${i}`}
-          className={`absolute rounded-full bg-violet-200/60 ${star.size}`}
+          className={`absolute rounded-full bg-cyan-200/60 ${star.size}`}
           style={{
             top: star.top,
             left: star.left,
@@ -198,7 +198,7 @@ function ScatteredLifeIcons() {
           }}
         >
           <item.Icon
-            className={`${item.size} ${item.color} ${item.rotate} drop-shadow-[0_0_14px_rgba(167,139,250,0.35)]`}
+            className={`${item.size} ${item.color} ${item.rotate} drop-shadow-[0_0_14px_rgba(6,182,212,0.35)]`}
           />
         </motion.div>
       ))}
@@ -226,7 +226,7 @@ function TimelineCard({ stage, index }) {
         } flex-col`}
       >
         <div className={`flex-1 ${isLeft ? "md:text-right" : "md:text-left"} text-center`}>
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-violet-300/80">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300/80">
             {stage.era}
           </span>
           <h3 className="mt-2 text-2xl font-bold text-slate-50 md:text-3xl">{stage.title}</h3>
@@ -241,7 +241,7 @@ function TimelineCard({ stage, index }) {
             {stage.chips.map((chip) => (
               <span
                 key={chip}
-                className="rounded-full border border-violet-500/25 bg-violet-950/40 px-3 py-1 text-xs text-violet-200/90"
+                className="rounded-full border border-cyan-500/25 bg-cyan-950/40 px-3 py-1 text-xs text-cyan-200/90"
               >
                 {chip}
               </span>
@@ -251,7 +251,7 @@ function TimelineCard({ stage, index }) {
 
         <div className="relative z-10 flex shrink-0 flex-col items-center">
           <div
-            className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${stage.accent} shadow-lg shadow-violet-900/30 ring-2 ring-white/10`}
+            className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${stage.accent} shadow-lg shadow-cyan-900/30 ring-2 ring-white/10`}
           >
             <Icon className="text-2xl text-white" />
           </div>
@@ -267,12 +267,12 @@ const JourneyTimeline = () => {
   return (
     <section
       id="journey"
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#0a0a12] via-[#0f0f1a] to-[#0a0a12] py-24 px-4 md:px-8"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712] py-24 px-4 md:px-8"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 top-20 h-80 w-80 rounded-full bg-violet-600/15 blur-3xl" />
+        <div className="absolute -left-32 top-20 h-80 w-80 rounded-full bg-blue-600/10 blur-3xl" />
         <div className="absolute right-0 top-1/2 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-5xl">
@@ -284,7 +284,7 @@ const JourneyTimeline = () => {
           className="relative z-10 text-center"
         >
           <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Timeline</p>
-          <h2 className="mt-3 bg-gradient-to-r from-violet-200 via-fuchsia-200 to-cyan-200 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+          <h2 className="mt-3 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
             My Journey
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-400">
@@ -297,7 +297,7 @@ const JourneyTimeline = () => {
             <ScatteredLifeIcons />
 
             <div
-              className="absolute left-1/2 top-4 bottom-4 z-[1] hidden w-px -translate-x-1/2 bg-gradient-to-b from-violet-500/50 via-cyan-400/30 to-fuchsia-500/50 md:block"
+              className="absolute left-1/2 top-4 bottom-4 z-[1] hidden w-px -translate-x-1/2 bg-gradient-to-b from-cyan-500/50 via-blue-400/30 to-teal-500/50 md:block"
               aria-hidden="true"
             />
 
@@ -313,9 +313,9 @@ const JourneyTimeline = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative z-10 mt-24 rounded-3xl border border-violet-500/20 bg-gradient-to-br from-violet-950/50 via-slate-900/50 to-cyan-950/30 p-8 text-center backdrop-blur-sm"
+          className="relative z-10 mt-24 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/50 via-slate-900/50 to-blue-950/30 p-8 text-center backdrop-blur-sm"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-fuchsia-300/80">Current Stack</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-300/80">Current Stack</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <div className="flex flex-col items-center gap-2">
               <FaFlutter className="text-5xl text-sky-400 drop-shadow-[0_0_12px_rgba(56,189,248,0.5)]" />

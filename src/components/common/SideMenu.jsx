@@ -15,7 +15,7 @@ const SideMenu = ({ onClose }) => {
       {/* Drawer Panel */}
       <aside
         id="mobile-menu"
-        className="absolute right-0 top-0 h-full w-60 bg-[#0f0f1a] text-white shadow-lg border-l border-violet-500/20 flex flex-col"
+        className="absolute right-0 top-0 h-full w-60 bg-[#090f24] text-white shadow-lg border-l border-cyan-500/20 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
@@ -31,7 +31,7 @@ const SideMenu = ({ onClose }) => {
 
         {/* Links */}
         <nav className="flex flex-col">
-          <a href="#hero" onClick={onClose} className="hover:bg-violet-500/15 px-4 py-3">Home</a>
+          <a href="#hero" onClick={onClose} className="hover:bg-cyan-500/15 px-4 py-3">Home</a>
           <a href="#journey" onClick={onClose} className="hover:bg-white/10 px-4 py-3">Journey</a>
           <a href="#project" onClick={onClose} className="hover:bg-white/10 px-4 py-3">Projects</a>
           <a href="#contact" onClick={onClose} className="hover:bg-white/10 px-4 py-3">Contact</a>

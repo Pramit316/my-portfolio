@@ -10,7 +10,7 @@ import UsePresenceData from "./sections/Projects/UsePresenceData.js";
 function App() {
   
   return (
-    <div className="flex flex-col w-full overflow-x-hidden bg-gradient-to-b from-[#0a0a12] via-[#0f0f1a] to-[#0a0a12]">
+    <div className="flex flex-col w-full overflow-x-hidden bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712]">
       <AppBar ></AppBar>
       <HeroSection></HeroSection>
       <JourneyTimeline />
