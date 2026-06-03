@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from "emailjs-com";
+
 
 const schema = z.object ({
   name: z.string().min(2, "Please enter your full name."),
@@ -28,21 +30,45 @@ const ContactMe = () => {
   const onSubmit = async (data) => {
     setServerMsg({ok: null, text:""})
 
-    try{
-      await new Promise((r)=> setTimeout(r,800));
-      reset();
-      setServerMsg({ok: true, text:"Message sent. I'll get back to you soon!"}); 
-    }catch(e){
-      setServerMsg({ok: false, text:`Something went wrong. Please try again!! ${e}`}); 
-    }
+    try {
+    await emailjs.send(
+      "service_t6awkp5",
+      "template_qpq8o74",
+      {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      },
+      "WUI-uHnSVbJAAqZho"
+    );
+
+    reset();
+    setServerMsg({
+      ok: true,
+      text: "Message sent successfully! I'll get back to you soon.",
+    });
+  }  catch (error) {
+  console.error("EmailJS status:", error.status);
+  console.error("EmailJS text:", error.text);
+
+  setServerMsg({
+    ok: false,
+    text: error?.text || "Something went wrong. Please try again.",
+  });
+}
+
+
   }
 
   return (
-    <section aria-labelledby="contact-title" className="flex flex-col justify-center items-center w-full bg-black mt-20">
+    <section id="contact" aria-labelledby="contact-title" className="relative flex flex-col justify-center items-center w-full bg-gradient-to-b from-[#0a0a12] to-[#0f0f1a] mt-20 py-16 border-t border-violet-500/10">
       <div className="max-w-screen-md w-full mt-10 px-6">
         {/* Header */}
         <div className="text-center">
-          <h2 id = "contact-title" className="text-2xl">Let's Work Together</h2>
+          <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Get in touch</p>
+          <h2 id="contact-title" className="mt-3 text-3xl md:text-4xl font-semibold bg-gradient-to-r from-violet-200 to-cyan-200 bg-clip-text text-transparent">
+            Let's Work Together
+          </h2>
           <p className="mt-4 text-slate-400">
             Have a project in mind or want to collaborate? I'd love to hear from you.
             Send me a message and let's create something amazing together.
@@ -61,7 +87,7 @@ const ContactMe = () => {
                 type="text"
                 autoComplete="name"
                 required
-                className="h-11 border border-slate-400 rounded-lg bg-transparent px-3 py-3 outline-none focus-visible:ring-4 focus-visible:ring-slate-400/30 focus-visible:border-slate-300 transition"
+                className="h-11 border border-violet-500/30 rounded-lg bg-violet-950/20 px-3 py-3 outline-none focus-visible:ring-4 focus-visible:ring-violet-500/25 focus-visible:border-cyan-400/50 transition"
               />
               {errors.name && <p className = "text-red-400 text-sm mt-1">{errors.name.message}</p>}
             </div>
@@ -74,7 +100,7 @@ const ContactMe = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="h-11 border border-slate-400 rounded-lg bg-transparent px-3 py-3 outline-none focus-visible:ring-4 focus-visible:ring-slate-400/30 focus-visible:border-slate-300 transition"
+                className="h-11 border border-violet-500/30 rounded-lg bg-violet-950/20 px-3 py-3 outline-none focus-visible:ring-4 focus-visible:ring-violet-500/25 focus-visible:border-cyan-400/50 transition"
               />
               {errors.email && <p className = "text-red-400 text-sm mt-1">{errors.email.message}</p>}
             </div>
@@ -88,7 +114,7 @@ const ContactMe = () => {
               id = "message"
               {...register("message")}
               required
-              className="border border-slate-500 rounded-lg bg-transparent px-3 py-3 w-full outline-none focus-visible:ring-4 focus-visible:ring-slate-500/30 focus-visible:border-slate-300 transition"
+              className="border border-violet-500/30 rounded-lg bg-violet-950/20 px-3 py-3 w-full outline-none focus-visible:ring-4 focus-visible:ring-violet-500/25 focus-visible:border-cyan-400/50 transition"
             ></textarea>
             {errors.message && <p className = "text-red-400 text-sm mt-1">{errors.message.message}</p>}
           </div>
@@ -96,7 +122,7 @@ const ContactMe = () => {
           {/* Button */}
           <button
             type="submit"
-            className="mt-4 inline-flex items-center justify-center px-5 h-11 !bg-white text-black text-sm font-medium rounded-lg shadow-lg shadow-white/10 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-slate-400/30 transition"
+            className="mt-4 inline-flex items-center justify-center px-5 h-11 bg-gradient-to-r from-violet-500 to-fuchsia-600 !text-white text-sm font-medium rounded-lg shadow-lg shadow-violet-500/30 hover:from-violet-400 hover:to-fuchsia-500 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-500/30 transition"
           >
             Send Message
           </button>

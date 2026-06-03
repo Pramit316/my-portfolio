@@ -1,5 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 @import "tailwindcss";
-
 
 
 :root {
@@ -7,9 +7,21 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Dark theme palette */
+  --bg-deep: #0a0a12;
+  --bg-mid: #0f0f1a;
+  --bg-elevated: #161622;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #22d3ee;
+  --accent-fuchsia: #e879f9;
+  --accent-emerald: #34d399;
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(139, 92, 246, 0.2);
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-deep);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,6 +37,13 @@ a {
 a:hover {
   color: #535bf2;
 }
+
+.italianno-regular {
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 /* body {
   
@@ -76,4 +95,25 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+html { scroll-behavior: smooth; }
+section[id], div[id] { scroll-margin-top: 96px; }
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes journey-float {
+  0%, 100% { transform: translateY(0) rotate(var(--tw-rotate, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--tw-rotate, 0deg)); }
+}
+
+@keyframes journey-twinkle {
+  0%, 100% { opacity: var(--icon-opacity, 0.33); }
+  50% { opacity: calc(var(--icon-opacity, 0.33) * 1.45); }
+}
+
+.journey-scatter-icon {
+  animation: journey-float 6s ease-in-out infinite, journey-twinkle 4s ease-in-out infinite;
 }

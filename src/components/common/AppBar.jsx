@@ -1,34 +1,88 @@
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import SideMenu from "./SideMenu";
 
 const AppBar = () => {
+    const [open, setOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+
+    useEffect(()=> {
+        const onKey = (e) => {
+            if(e.key === 'Escape') setOpen(false);
+        };
+
+        window.addEventListener("keydown", onKey);
+        return ()=> window.removeEventListener("keydown", onKey);
+    }, []);
+    
+    useEffect(() => {
+    const sections = document.querySelectorAll("section[id], div[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "-96px 0px -10% 0px"
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const navItems = [
+    { id: "hero", label: "Home" },
+    { id: "journey", label: "Journey" },
+    { id: "project", label: "Project" },
+    { id: "contact", label: "Contact" },
+  ];
 
     return (
-        <header className = "mt-4  w-full p-4">
+        <header className="fixed mt-4 w-full py-2 px-4 bg-[#0f0f1a]/80 border border-violet-500/15 md:backdrop-blur-md rounded-full z-100 shadow-lg shadow-violet-950/30">
             <nav className = "flex justify-between items-center px-4 sm:px-6 lg:px-12 ">
 
                 {/* Left: Logo / Portfolio */}
                 <button className = "flex items-center !bg-transparent">
-                    <div className = "px-2 mr-2 bg-linear-to-br from-sky-500 to-indigo-500 rounded-lg text-3xl md:text-xl">P</div>
+                    <div className="px-2 mr-2 bg-gradient-to-br from-violet-500 to-fuchsia-600 rounded-lg text-3xl md:text-xl font-bold">P</div>
                     <div className = "text-2xl md:text-xl">Portfolio</div>
                 </button>
 
                 {/* Middle Nav Links */}
                 <div className = "hidden md:flex flex-wrap justify-center text-sm items-center ">
-                    <a href = "#home" className = "px-4 py-2 !rounded-xl !bg-transparent !text-white">Home</a>
-                    <a href = "#journey" className = "px-4 py-2 !rounded-xl !bg-transparent !text-white">Journey</a>
-                    <a href = "#project" className = "px-4 py-2 !rounded-xl !bg-transparent !text-white">Project</a>
-                    <a href = "#contact" className = "px-4 py-2 !rounded-xl !bg-transparent !text-white">Contact</a>
+                    {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={`relative px-4 py-2 !rounded-xl !bg-transparent !text-white transition ${
+                activeSection === item.id
+                  ?
+                    "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:rounded-full after:bg-[linear-gradient(90deg,#a78bfa,#e879f9,#22d3ee,#a78bfa)] after:bg-[length:200%_100%] after:animate-[shimmer_2s_linear_infinite]"
+                  : "hover:text-cyan-300"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
                 </div>
 
                 {/* hamburger button */}
-                <button className = "md:hidden !bg-transparent text-xl">
+                <button className = "md:hidden !bg-transparent text-xl" onClick={()=> setOpen(!open)}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
 
                 {/* Let's Talk Button */}
-                <button className = "hidden md:inline bg-linear-to-br from-sky-500 to-indigo-500 rounded-md !text-sm !rounded-full">Lets Talk</button>
+                <a href="#contact" className="hidden md:inline bg-gradient-to-r from-violet-500 to-fuchsia-600 rounded-full px-5 py-2 !text-sm font-medium text-white hover:from-violet-400 hover:to-fuchsia-500 transition">Lets Talk</a>
             </nav>
+
+            {open && (
+                <SideMenu onClose={()=> setOpen(false)}></SideMenu>
+            )}
         </header>
     );
 }

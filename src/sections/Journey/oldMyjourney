@@ -1,0 +1,48 @@
+{/* <div className = "max-w-screen-2xl">
+                <div className = "mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className = "text-3xl text-center">This is my journey</h2>
+                    <div className = "mt-6 text-xl text-center">From student to senior developer - here's how my career has evolved over the years, branching out into new technologies and responsibilities.</div>
+                </div>
+
+                <div className = "grid grid-cols-5 gap-2 mt-4 px-4 py-4 ">
+                    <div className = "px-4 py-4">Logo</div>
+                    <div className = "border-2 border-slate-700 px-4 py-4 rounded-xl">
+                        <span className = "bg-green-500 rounded-full mg-0 px-2 text-sm">2021</span>
+                        <span className = "px-4">work</span>
+                        <h2 className = "pt-2">Junior Developer</h2>
+                        <h2 className = "pt-2 text-sm">Software Company</h2>
+                        <h3 className = "text-sm pt-2">Started my professional journey, learned industry best practices</h3>
+                    </div>
+                    <div className = "px-4 py-4">logo</div>
+                    <div className = "border-2 border-slate-700 px-4 py-4 rounded-xl">
+                        <span className = "bg-green-500 rounded-full mg-0 px-2 text-sm">2021</span>
+                        <span className = "px-4">work</span>
+                        <h2 className = "pt-2">Junior Developer</h2>
+                        <h2 className = "pt-2 text-sm">Software Company</h2>
+                        <h3 className = "text-sm pt-2">Started my professional journey, learned industry best practices</h3>
+                    </div>
+                    <div className = "px-4 py-4">logo</div>
+                    <div className = "border-2 border-slate-700 px-4 py-4 rounded-xl">
+                        <span className = "bg-green-500 rounded-full mg-0 px-2 text-sm">2021</span>
+                        <span className = "px-4">work</span>
+                        <h2 className = "pt-2">Junior Developer</h2>
+                        <h2 className = "pt-2 text-sm">Software Company</h2>
+                        <h3 className = "text-sm pt-2">Started my professional journey, learned industry best practices</h3>
+                    </div>
+                    <div className = "px-4 py-4">logo</div>
+                    <div className = "border-2 border-slate-700 px-4 py-4 rounded-xl">
+                        <span className = "bg-green-500 rounded-full mg-0 px-2 text-sm">2021</span>
+                        <span className = "px-4">work</span>
+                        <h2 className = "pt-2">Junior Developer</h2>
+                        <h2 className = "pt-2 text-sm">Software Company</h2>
+                        <h3 className = "text-sm pt-2">Started my professional journey, learned industry best practices</h3>
+                    </div>
+                    <div className = "px-4 py-4">logo</div>
+                    <div className = "border-2 border-slate-700 px-4 py-4 rounded-xl"><span className = "bg-green-500 rounded-full mg-0 px-2 text-sm">2021</span>
+                        <span className = "px-4">work</span>
+                        <h2 className = "pt-2">Junior Developer</h2>
+                        <h2 className = "pt-2 text-sm">Software Company</h2>
+                        <h3 className = "text-sm pt-2">Started my professional journey, learned industry best practices</h3></div>
+                </div>
+                
+            </div> */}
