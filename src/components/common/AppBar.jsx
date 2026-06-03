@@ -63,7 +63,7 @@ const AppBar = () => {
                 activeSection === item.id
                   ?
                     "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:rounded-full after:bg-[linear-gradient(90deg,#06b6d4,#3b82f6,#10b981,#06b6d4)] after:bg-[length:200%_100%] after:animate-[shimmer_2s_linear_infinite]"
-                  : "hover:text-cyan-300"
+                  : "hover:!text-cyan-300"
               }`}
             >
               {item.label}
@@ -77,7 +77,7 @@ const AppBar = () => {
                 </button>
 
                 {/* Let's Talk Button */}
-                <a href="#contact" className="hidden md:inline bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full px-5 py-2 !text-sm font-medium text-white hover:from-cyan-400 hover:to-blue-500 transition shadow-lg shadow-cyan-500/20">Lets Talk</a>
+                <a href="#contact" className="hidden md:inline bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full px-5 py-2 !text-sm font-medium !text-white hover:from-cyan-400 hover:to-blue-500 transition shadow-lg shadow-cyan-500/20">Lets Talk</a>
             </nav>
 
             {open && (

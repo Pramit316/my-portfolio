@@ -66,7 +66,7 @@ const ContactMe = () => {
         {/* Header */}
         <div className="text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Get in touch</p>
-          <h2 id="contact-title" className="mt-3 text-3xl md:text-4xl font-semibold bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent">
+          <h2 id="contact-title" className="mt-3 py-2 text-3xl md:text-4xl font-semibold bg-gradient-to-r from-cyan-200 to-blue-200 bg-clip-text text-transparent leading-tight">
             Let's Work Together
           </h2>
           <p className="mt-4 text-slate-400">

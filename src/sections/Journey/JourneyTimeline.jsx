@@ -284,7 +284,7 @@ const JourneyTimeline = () => {
           className="relative z-10 text-center"
         >
           <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Timeline</p>
-          <h2 className="mt-3 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+          <h2 className="mt-3 py-2 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl font-bold text-transparent md:text-5xl leading-tight">
             My Journey
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-400">

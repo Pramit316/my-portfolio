@@ -31,10 +31,10 @@ const SideMenu = ({ onClose }) => {
 
         {/* Links */}
         <nav className="flex flex-col">
-          <a href="#hero" onClick={onClose} className="hover:bg-cyan-500/15 px-4 py-3">Home</a>
-          <a href="#journey" onClick={onClose} className="hover:bg-white/10 px-4 py-3">Journey</a>
-          <a href="#project" onClick={onClose} className="hover:bg-white/10 px-4 py-3">Projects</a>
-          <a href="#contact" onClick={onClose} className="hover:bg-white/10 px-4 py-3">Contact</a>
+          <a href="#hero" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-cyan-500/15 px-4 py-3 transition">Home</a>
+          <a href="#journey" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Journey</a>
+          <a href="#project" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Projects</a>
+          <a href="#contact" onClick={onClose} className="!text-slate-200 hover:!text-white hover:bg-white/10 px-4 py-3 transition">Contact</a>
         </nav>
       </aside>
     </div>

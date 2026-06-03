@@ -86,7 +86,7 @@ export function ProjectCard({ project, flipped = false }) {
             {project.demo && project.demo !== "#" && (
             <a
               href={project.demo}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 font-medium text-white shadow-md shadow-cyan-500/30 transition hover:from-cyan-400 hover:to-blue-500"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 font-medium !text-white shadow-md shadow-cyan-500/30 transition hover:from-cyan-400 hover:to-blue-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -99,7 +99,7 @@ export function ProjectCard({ project, flipped = false }) {
             {project.github && project.github !== "#" && (
               <a
                 href={project.github}
-                className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-950/50 px-4 py-2 font-medium text-slate-200 shadow-sm transition hover:border-cyan-400/60 hover:text-cyan-200"
+                className="inline-flex items-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-950/50 px-4 py-2 font-medium !text-slate-200 shadow-sm transition hover:border-cyan-400/60 hover:!text-cyan-200"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -138,7 +138,7 @@ const MyProjects = () => {
           <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">
             Work
           </p>
-          <h2 className="mt-3 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl md:text-5xl font-semibold tracking-tight text-transparent">
+          <h2 className="mt-3 py-2 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl md:text-5xl font-semibold tracking-tight text-transparent leading-tight">
             Featured Projects
           </h2>
           <p className="mt-5 text-slate-400 text-lg max-w-2xl mx-auto">

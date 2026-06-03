@@ -26,7 +26,7 @@ export default function UsePresenceData() {
     <section id="project" className="flex justify-center min-h-[700px] bg-gradient-to-b from-[#090f24] via-[#040712] to-[#090f24] py-12">
       <div className="text-center mt-24 max-w-screen-2xl w-full px-4">
         <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Work</p>
-        <h2 className="mt-3 text-4xl font-semibold bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-transparent">
+        <h2 className="mt-3 py-2 text-4xl font-semibold bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-transparent leading-tight">
           Featured Projects
         </h2>
         <p className="mt-6 text-slate-400 text-lg max-w-2xl mx-auto">
