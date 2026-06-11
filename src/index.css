@@ -127,3 +127,111 @@ section[id], div[id] { scroll-margin-top: 96px; }
   mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 85%);
   -webkit-mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 85%);
 }
+
+/* CRT Retro Monitor effects */
+@keyframes crt-flicker {
+  0% { opacity: 0.992; }
+  50% { opacity: 1; }
+  100% { opacity: 0.992; }
+}
+
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(0, 0, 0, 0.75);
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%);
+  background-size: 100% 6px;
+  z-index: 99;
+  pointer-events: none;
+  animation: crt-flicker 0.25s infinite;
+}
+
+@keyframes crt-off-anim {
+  0% {
+    transform: scale(1, 1);
+    filter: brightness(1) contrast(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1, 0.005);
+    filter: brightness(3) contrast(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0, 0);
+    filter: brightness(10) contrast(2);
+    opacity: 0;
+  }
+}
+
+.crt-screen-off {
+  animation: crt-off-anim 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Windows XP Luna styles */
+.xp-title-bar-gradient {
+  background: linear-gradient(to right, #0058e6 0%, #3a93ff 8%, #0055d4 100%);
+}
+
+.xp-taskbar-gradient {
+  background: linear-gradient(to bottom, #245dd7 0%, #0e3cbc 12%, #1850d5 88%, #103cbd 100%);
+}
+
+.xp-window-bevel {
+  box-shadow: inset 1px 1px 0px #ffffff, 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.xp-panel-bevel {
+  border: 1px solid #7f9db9;
+  background-color: #ffffff;
+}
+
+.xp-btn {
+  background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 100%);
+  border: 1px solid #707070;
+  box-shadow: inset -1px -1px 1px rgba(0,0,0,0.15);
+  border-radius: 3px;
+  color: #333333;
+}
+.xp-btn:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #e0c890 100%);
+  border-color: #e5a040;
+}
+.xp-btn:active {
+  background: linear-gradient(to bottom, #e0c890 0%, #ffffff 100%);
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.15);
+}
+
+.xp-btn-blue {
+  background: linear-gradient(to bottom, #7fb7f5 0%, #0053e1 100%);
+  border: 1px solid #002c91;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+}
+.xp-btn-blue:hover {
+  background: linear-gradient(to bottom, #a3cbf7 0%, #1a6ff0 100%);
+}
+.xp-btn-blue:active {
+  background: linear-gradient(to bottom, #003da8 0%, #0053e1 100%);
+}
+
+.xp-btn-start {
+  background: linear-gradient(to bottom, #53a93f 0%, #357a22 100%);
+  border: 1px solid #2d6b2d;
+  color: white;
+  font-weight: bold;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.4);
+}
+.xp-btn-start:hover {
+  background: linear-gradient(to bottom, #6ac953 0%, #449c2c 100%);
+}
