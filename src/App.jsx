@@ -10,9 +10,9 @@ import UsePresenceData from "./sections/Projects/UsePresenceData.js";
 function App() {
   
   return (
-    <div className="relative flex flex-col w-full overflow-x-hidden bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712]">
+    <div className="relative flex flex-col w-full overflow-x-hidden bg-[#3b6ea5]">
       {/* Fixed background grid overlay */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-retro-desktop-dither" />
       
       <div className="relative z-10 flex flex-col w-full">
         <AppBar></AppBar>

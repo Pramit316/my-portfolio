@@ -65,43 +65,46 @@ const AppBar = () => {
   ];
 
     return (
-        <header className="fixed mt-4 w-full py-2 px-4 bg-[#090f24]/80 border border-cyan-500/15 md:backdrop-blur-md rounded-full z-100 shadow-lg shadow-cyan-950/30">
-            <nav className = "flex justify-between items-center px-4 sm:px-6 lg:px-12 ">
+        <header className="fixed top-0 left-0 w-full py-1.5 px-4 xp-taskbar-gradient border-b-2 border-b-[#002c91] z-[100] shadow-md">
+            <nav className = "flex justify-between items-center px-2 sm:px-4 lg:px-6">
 
-                {/* Left: Logo / Portfolio */}
-                <button className = "flex items-center !bg-transparent">
-                    <div className="px-2 mr-2 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg text-3xl md:text-xl font-bold">P</div>
-                    <div className = "text-2xl md:text-xl">Portfolio</div>
+                {/* Left: Start Button Logo */}
+                <button 
+                  onClick={(e) => handleScroll(e, "hero")}
+                  className="flex items-center !bg-transparent p-0 border-none cursor-pointer"
+                >
+                    <div className="xp-btn-start flex items-center gap-1.5 h-[32px] px-4 mr-2 cursor-pointer select-none text-[13px] italic font-bold">
+                      <span className="text-[13px] font-sans not-italic font-bold bg-white text-[#52ad3f] w-[18px] h-[18px] flex items-center justify-center rounded-sm shadow-inner">P</span>
+                      <span className="font-sans leading-none !text-white tracking-tight select-none">start</span>
+                    </div>
+                    <div className="hidden sm:block text-sm font-bold text-white font-sans tracking-wide">Pramit Portfolio</div>
                 </button>
-
-                {/* Middle Nav Links */}
-                <div className = "hidden md:flex flex-wrap justify-center text-sm items-center ">
+ 
+                {/* Middle Nav Links (Styled as Taskbar buttons) */}
+                <div className = "hidden md:flex flex-wrap justify-center text-xs items-center">
                     {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => handleScroll(e, item.id)}
-              className="relative px-4 py-2 !rounded-xl !bg-transparent !text-white transition hover:!text-cyan-300"
+              className={`relative px-3.5 py-1 text-xs font-bold !text-white select-none transition-all no-underline flex items-center h-[28px] mx-1 rounded border shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] ${
+                activeSection === item.id 
+                  ? "bg-[#103496] border-t-black/40 border-l-black/40 border-r-white/25 border-b-white/25 shadow-inner" 
+                  : "bg-[#3c80f4] border-t-white/30 border-l-white/30 border-r-black/40 border-b-black/40 hover:bg-[#528eff] hover:!text-white"
+              }`}
             >
               {item.label}
-              {activeSection === item.id && (
-                <motion.span
-                  layoutId="activeUnderline"
-                  className="absolute left-0 bottom-0 h-[2px] w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-teal-400 rounded-full"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
             </a>
           ))}
                 </div>
-
+ 
                 {/* hamburger button */}
-                <button className = "md:hidden !bg-transparent text-xl" onClick={()=> setOpen(!open)}>
+                <button className = "md:hidden !bg-transparent text-xl p-0 border-none cursor-pointer text-white" onClick={()=> setOpen(!open)}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
-
+ 
                 {/* Let's Talk Button */}
-                <a href="#contact" onClick={(e) => handleScroll(e, "contact")} className="hidden md:inline bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full px-5 py-2 !text-sm font-medium !text-white hover:from-cyan-400 hover:to-blue-500 transition shadow-lg shadow-cyan-500/20">Lets Talk</a>
+                <a href="#contact" onClick={(e) => handleScroll(e, "contact")} className="hidden md:inline-flex xp-btn-blue px-4 py-1.5 !text-xs font-bold !text-white shadow-md hover:brightness-110 active:brightness-95 transition no-underline">Lets Talk</a>
             </nav>
 
             {open && (

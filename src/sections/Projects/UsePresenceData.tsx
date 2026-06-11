@@ -56,11 +56,11 @@ export default function UsePresenceData() {
     <section id="project" className="flex flex-col items-center justify-center py-20 px-4 w-full">
       {/* Section Header */}
       <div className="text-center mb-12">
-        <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Interactive Work</p>
-        <h2 className="mt-3 py-2 text-4xl font-semibold bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-transparent leading-tight">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Interactive Work</p>
+        <h2 className="mt-3 py-2 text-slate-950 text-4xl font-black leading-tight font-sans">
           Featured Projects
         </h2>
-        <p className="mt-4 text-slate-400 text-lg max-w-2xl mx-auto">
+        <p className="mt-4 text-slate-900 text-lg max-w-2xl mx-auto font-sans font-medium">
           Explore my applications through this retro 2000s desktop simulator. Use the monitor controls or folder buttons to browse.
         </p>
       </div>
