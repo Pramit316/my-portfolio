@@ -30,7 +30,7 @@ export const PROJECTS: Project[] = [
     description:
       "A personal finance tracker that helps users monitor income, expenses, and savings goals in one place. Built with a clean dashboard, category breakdowns, and monthly summaries so spending habits stay visible and actionable.",
     gradient: "from-emerald-600/80 via-teal-700/80 to-cyan-900/90",
-    tech: ["Flutter", "Firebase", "Charts"],
+    tech: ["Java", "Spring Boot", "Angular"],
     demo: "#",
     github: "#",
   },
@@ -46,9 +46,9 @@ export const PROJECTS: Project[] = [
   {
     title: "Notoro",
     description:
-      "A note-taking and organization app focused on quick capture, tagging, and search. Designed for students and developers who need lightweight notes without clutter — with a simple, readable interface and local or cloud sync.",
+      "A productivity application combining a Pomodoro timer with Trello-style board note-taking and organization features, designed for local-first capture without cloud sync.",
     gradient: "from-fuchsia-600/70 via-violet-800/80 to-indigo-950/90",
-    tech: ["Flutter", "Local Storage", "UI/UX"],
+    tech: ["Java", "Spring Boot", "Angular"],
     demo: "#",
     github: "#",
   },

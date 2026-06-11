@@ -187,19 +187,25 @@ function ScatteredLifeIcons() {
         <motion.div
           key={item.id}
           initial={{ opacity: 0, scale: 0.6 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          animate={inView ? { opacity: item.opacity, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.05 }}
-          className="journey-scatter-icon absolute opacity-[var(--icon-opacity)]"
+          className="absolute"
           style={{
             top: item.top,
             left: item.left,
-            animationDelay: item.delay,
-            ["--icon-opacity"]: String(item.opacity),
           }}
         >
-          <item.Icon
-            className={`${item.size} ${item.color} ${item.rotate} drop-shadow-[0_0_14px_rgba(6,182,212,0.35)]`}
-          />
+          <div
+            className="journey-scatter-icon"
+            style={{
+              animationDelay: item.delay,
+              "--icon-opacity": 0.8,
+            }}
+          >
+            <item.Icon
+              className={`${item.size} ${item.color} ${item.rotate} drop-shadow-[0_0_14px_rgba(6,182,212,0.35)]`}
+            />
+          </div>
         </motion.div>
       ))}
     </div>
@@ -233,20 +239,7 @@ function TimelineCard({ stage, index }) {
           <p className="mt-3 text-slate-400 leading-relaxed max-w-md mx-auto md:mx-0 md:max-w-sm">
             {stage.description}
           </p>
-          <div
-            className={`mt-4 flex flex-wrap gap-2 justify-center ${
-              isLeft ? "md:justify-end" : "md:justify-start"
-            }`}
-          >
-            {stage.chips.map((chip) => (
-              <span
-                key={chip}
-                className="rounded-full border border-cyan-500/25 bg-cyan-950/40 px-3 py-1 text-xs text-cyan-200/90"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
+
         </div>
 
         <div className="relative z-10 flex shrink-0 flex-col items-center">
