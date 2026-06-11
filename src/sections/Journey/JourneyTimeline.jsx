@@ -260,7 +260,7 @@ const JourneyTimeline = () => {
   return (
     <section
       id="journey"
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712] py-24 px-4 md:px-8"
+      className="relative w-full overflow-hidden py-24 px-4 md:px-8"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-32 top-20 h-80 w-80 rounded-full bg-blue-600/10 blur-3xl" />

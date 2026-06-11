@@ -10,13 +10,17 @@ import UsePresenceData from "./sections/Projects/UsePresenceData.js";
 function App() {
   
   return (
-    <div className="flex flex-col w-full overflow-x-hidden bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712]">
-      <AppBar ></AppBar>
-      <HeroSection></HeroSection>
-      <JourneyTimeline />
-      {/* <MyProjects></MyProjects> */}
-      <UsePresenceData />
-      <ContactMe></ContactMe>
+    <div className="relative flex flex-col w-full overflow-x-hidden bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712]">
+      {/* Fixed background grid overlay */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern" />
+      
+      <div className="relative z-10 flex flex-col w-full">
+        <AppBar></AppBar>
+        <HeroSection></HeroSection>
+        <JourneyTimeline />
+        <UsePresenceData />
+        <ContactMe></ContactMe>
+      </div>
     </div>
   );
 }

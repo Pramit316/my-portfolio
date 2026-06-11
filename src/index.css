@@ -117,3 +117,13 @@ section[id], div[id] { scroll-margin-top: 96px; }
 .journey-scatter-icon {
   animation: journey-float 6s ease-in-out infinite, journey-twinkle 4s ease-in-out infinite;
 }
+
+/* Modern subtle background grid pattern */
+.bg-grid-pattern {
+  background-size: 55px 55px;
+  background-image: 
+    linear-gradient(to right, rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 85%);
+}

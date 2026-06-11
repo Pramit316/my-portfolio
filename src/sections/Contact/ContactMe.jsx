@@ -61,7 +61,7 @@ const ContactMe = () => {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative flex flex-col justify-center items-center w-full bg-gradient-to-b from-[#040712] to-[#090f24] mt-20 py-16 border-t border-cyan-500/10">
+    <section id="contact" aria-labelledby="contact-title" className="relative flex flex-col justify-center items-center w-full mt-20 py-16 border-t border-cyan-500/10">
       <div className="max-w-screen-md w-full mt-10 px-6">
         {/* Header */}
         <div className="text-center">
