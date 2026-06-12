@@ -6,19 +6,18 @@ const HeroSection = () => {
       id="hero"
       className="relative w-full mt-[100px] box-border px-4 py-4 md:px-8 lg:px-20 mb-4 min-h-[700px] flex items-center overflow-hidden"
     >
-      <div className="pointer-events-none absolute -left-20 top-1/4 h-64 w-64 rounded-full bg-blue-600/15 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 bottom-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
+
 
       <div className="relative flex flex-col text-center max-w-screen-4xl mx-auto md:flex-row items-center md:items-end justify-around gap-30 md:text-left ">
         <div className="md:max-w-2xl">
-          <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">Welcome</p>
-          <h1 className="mt-2 py-2 px-1 bg-gradient-to-r from-cyan-200 via-white to-blue-200 bg-clip-text text-5xl font-bold text-transparent md:text-6xl leading-tight">
+          <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Welcome</p>
+          <h1 className="mt-2 py-2 px-1 text-slate-950 text-5xl font-black md:text-6xl leading-tight font-sans">
             Hey, I am Pramit!
           </h1>
-          <h2 className="text-3xl mt-8 py-1 bg-gradient-to-r from-teal-300 to-cyan-300 bg-clip-text text-transparent font-semibold leading-tight">
+          <h2 className="text-3xl mt-4 py-1 text-[#0054e3] font-bold leading-tight font-sans">
             Application / Web Developer
           </h2>
-          <p className="text-xl md:text-2xl mt-8 text-slate-400 text-justify ">
+          <p className="text-lg md:text-xl mt-6 text-slate-900 text-justify font-sans font-medium leading-relaxed">
             A passionate developer who loves turning ideas into fast, clean, and
             user-friendly applications. I build full-stack solutions, mobile
             apps, and everything in between.
@@ -30,14 +29,41 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative flex-shrink-0"
         >
-          <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-teal-500/25 blur-2xl"></div>
 
-          <div
-            className="relative bg-[url('/images/myPortfolio.jpg')]
-            w-70 h-70 md:w-80 md:h-80 lg:w-92 lg:h-92 
-            bg-cover bg-center rounded-2xl 
-            shadow-xl shadow-cyan-500/25 ring-2 ring-cyan-500/20"
-          ></div>
+
+          {/* Windows XP style image viewer window */}
+          <div className="relative bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-2xl flex flex-col font-sans select-none w-70 h-80 md:w-80 md:h-92 lg:w-92 lg:h-100 overflow-hidden">
+            {/* XP Title bar */}
+            <div className="xp-title-bar-gradient px-2 py-1 flex items-center justify-between text-white font-bold text-xs select-none">
+              <div className="flex items-center gap-1.5 text-left">
+                <span className="text-[10px] md:text-xs tracking-wide">Pramit.jpg - Windows Picture Viewer</span>
+              </div>
+              {/* Fake controls */}
+              <div className="flex items-center gap-1 flex-shrink-0">
+                <div className="w-[18px] h-[18px] rounded bg-gradient-to-b from-[#7ca1e9] to-[#3b67c3] border border-[#0d2c6e] flex items-center justify-center font-bold text-[9px] text-white select-none">_</div>
+                <div className="w-[18px] h-[18px] rounded bg-gradient-to-b from-[#7ca1e9] to-[#3b67c3] border border-[#0d2c6e] flex items-center justify-center font-bold text-[9px] text-white select-none">□</div>
+                <div className="w-[18px] h-[18px] rounded bg-gradient-to-b from-[#f37a5a] to-[#c7321a] border border-[#7d1708] flex items-center justify-center font-bold text-[9px] text-white select-none">X</div>
+              </div>
+            </div>
+            
+            {/* Menu Bar */}
+            <div className="flex items-center gap-3 px-2 py-0.5 border-b border-white text-[10px] text-left text-gray-700 bg-[#ece9d8]">
+              <span>File</span>
+              <span>Edit</span>
+              <span>View</span>
+              <span>Help</span>
+            </div>
+            
+            {/* Image content inside beveled panel */}
+            <div className="flex-1 bg-white p-2 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full border border-[#7f9db9] rounded overflow-hidden">
+                <div 
+                  className="w-full h-full bg-[url('/images/myPortfolio.jpg')] bg-cover bg-center"
+                  style={{ imageRendering: "auto" }}
+                />
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
