@@ -1,25 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --font-sans: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+}
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  /* Dark theme palette */
-  --bg-deep: #040712;
-  --bg-mid: #090f24;
-  --bg-elevated: #111a36;
-  --accent-violet: #3b82f6; /* remapped to blue to ease transition */
-  --accent-cyan: #06b6d4;
-  --accent-fuchsia: #14b8a6; /* remapped to teal to ease transition */
-  --accent-emerald: #10b981;
-  --text-primary: #f8fafc;
-  --text-muted: #94a3b8;
-  --border-subtle: rgba(6, 182, 212, 0.15);
+  /* Retro theme palette - Light/Medium mode contrast */
+  --bg-deep: #3b6ea5;
+  --bg-mid: #ece9d8;
+  --bg-elevated: #ffffff;
+  --accent-violet: #0054e3; 
+  --accent-cyan: #215dc6;
+  --accent-fuchsia: #357a22; 
+  --accent-emerald: #53a93f;
+  --text-primary: #050a15;
+  --text-muted: #273549;
+  --border-subtle: rgba(0, 0, 0, 0.15);
 
-  color-scheme: dark;
+  color-scheme: light;
   color: var(--text-primary);
   background-color: var(--bg-deep);
 
@@ -229,9 +232,174 @@ section[id], div[id] { scroll-margin-top: 96px; }
   border: 1px solid #2d6b2d;
   color: white;
   font-weight: bold;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.4);
 }
 .xp-btn-start:hover {
   background: linear-gradient(to bottom, #6ac953 0%, #449c2c 100%);
+}
+
+/* Custom classic Windows XP style scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: #ece9d8;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #7fb7f5 0%, #0053e1 100%);
+  border: 2px solid #ece9d8;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.4);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #a3cbf7 0%, #1a6ff0 100%);
+}
+
+/* Retro Desktop Background Pattern */
+.bg-retro-desktop-dither {
+  background-color: #e5edf8;
+  background-image: 
+    conic-gradient(#d3e2f2 25%, transparent 25%, transparent 50%, #d3e2f2 50%, #d3e2f2 75%, transparent 75%, transparent);
+  background-size: 4px 4px;
+}
+
+/* Windows XP Beveled Input styling */
+.xp-input {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-top: 2px solid #7f9db9 !important;
+  border-left: 2px solid #7f9db9 !important;
+  border-right: 1px solid #d2cfc2 !important;
+  border-bottom: 1px solid #d2cfc2 !important;
+  border-radius: 0px !important;
+  outline: none !important;
+  font-family: Tahoma, "MS Sans Serif", sans-serif !important;
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1) !important;
+}
+.xp-input:focus {
+  border-color: #0054e3 !important;
+  outline: 1px dotted #333333 !important;
+}
+
+/* Classic Fieldset Border group box */
+.xp-fieldset {
+  border: 1px solid #d2cfc2 !important;
+  border-radius: 2px !important;
+  padding: 16px !important;
+  margin-top: 8px !important;
+}
+.xp-legend {
+  font-size: 11px !important;
+  font-weight: bold !important;
+  color: #002c91 !important;
+  padding: 0 6px !important;
+  background-color: #ece9d8 !important;
+}
+
+/* XP Tab strip styling */
+.xp-tab-strip {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid #919085;
+  padding-left: 6px;
+  margin-bottom: -1px;
+  z-index: 2;
+  position: relative;
+}
+.xp-tab {
+  font-size: 11px;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
+  padding: 4px 8px;
+  border-top: 1px solid #919085;
+  border-left: 1px solid #919085;
+  border-right: 1px solid #919085;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  background: #ece9d8;
+  color: #333333;
+}
+.xp-tab-active {
+  font-weight: bold;
+  background: #ece9d8;
+  border-top: 2px solid #e79b24;
+  border-left: 1px solid #919085;
+  border-right: 1px solid #919085;
+  border-bottom: 1px solid #ece9d8;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  margin-top: -1px;
+  color: #000000;
+  z-index: 3;
+}
+
+/* Responsive Desktop Island styles */
+.xp-desktop-island {
+  transform: translateY(-50%) translateX(var(--translate-x, 0px));
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-height: 700px) {
+  .xp-desktop-island {
+    transform: translateY(-50%) translateX(var(--translate-x, 0px)) scale(0.85) !important;
+    transform-origin: left center;
+  }
+}
+
+@media (max-height: 580px) {
+  .xp-desktop-island {
+    transform: translateY(-50%) translateX(var(--translate-x, 0px)) scale(0.7) !important;
+    transform-origin: left center;
+  }
+}
+
+@media (max-height: 480px) {
+  .xp-desktop-island {
+    transform: translateY(-50%) translateX(var(--translate-x, 0px)) scale(0.55) !important;
+    transform-origin: left center;
+  }
+}
+
+/* Custom Windows XP Close Button - Red Gradient & Shadow Bevel */
+.xp-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  margin: 0;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #e75436 0%, #b2270d 60%, #891300 100%) !important;
+  border: 1px solid #701602 !important;
+  border-radius: 3px !important;
+  box-shadow: 
+    inset 1px 1px 1px rgba(255, 255, 255, 0.4),
+    0px 1px 2px rgba(0, 0, 0, 0.3) !important;
+  cursor: pointer !important;
+  font-family: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif !important;
+  font-weight: bold !important;
+  font-size: 11px !important; /* Slightly smaller to fit the square nicely */
+  line-height: 1 !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.1s ease-in-out !important;
+  user-select: none !important;
+}
+
+.xp-close-button:hover {
+  background: linear-gradient(135deg, #ff7e65 0%, #d83d20 60%, #a0220c 100%) !important;
+  border-color: #92220b !important;
+  box-shadow: 
+    inset 1px 1px 1.5px rgba(255, 255, 255, 0.6),
+    0px 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.xp-close-button:active {
+  background: linear-gradient(135deg, #961904 0%, #750f00 100%) !important;
+  border-color: #500a00 !important;
+  box-shadow: 
+    inset 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+  padding-top: 1px !important;
+  padding-left: 1px !important;
 }
