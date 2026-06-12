@@ -61,10 +61,21 @@ const ContactMe = () => {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative flex flex-col justify-center items-center w-full mt-20 py-16">
+    <section id="contact" className="relative flex flex-col justify-center items-center w-full mt-10 sm:mt-20 py-8 sm:py-16">
       
+      {/* Section Header */}
+      <div className="text-center mb-4 sm:mb-6 relative z-10 px-4">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Get In Touch</p>
+        <h2 className="mt-3 py-2 text-slate-955 text-4xl md:text-5xl font-black leading-tight font-sans">
+          Contact Me
+        </h2>
+        <p className="mt-3 text-slate-900 text-base md:text-lg max-w-xl mx-auto font-sans font-medium">
+          Have a question, an idea, or want to collaborate? Drop a message below and let's connect.
+        </p>
+      </div>
+
       {/* Outer XP Dialog Box Wrapper */}
-      <div className="max-w-screen-sm w-full mt-10 px-4">
+      <div className="max-w-screen-sm w-full mt-2 sm:mt-5 px-4">
         <div className="bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-2xl flex flex-col font-sans select-none overflow-hidden text-[#333333]">
           
           {/* XP Title Bar */}

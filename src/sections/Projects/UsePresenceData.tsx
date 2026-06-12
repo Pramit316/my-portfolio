@@ -24,6 +24,29 @@ export default function UsePresenceData() {
   const [isMonitorOn, setIsMonitorOn] = useState(true);
   const [isFolderOpen, setIsFolderOpen] = useState(true);
   const [time, setTime] = useState("");
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+  };
 
   // Update time for Windows XP system tray clock
   useEffect(() => {
@@ -65,8 +88,8 @@ export default function UsePresenceData() {
         </p>
       </div>
 
-      {/* Monitor Wrapper Container (Grouping Bezel and Stand) */}
-      <div className="relative flex flex-col items-center w-full max-w-3xl">
+      {/* Desktop CRT Monitor View (Hidden on mobile/tablet) */}
+      <div className="hidden md:flex flex-col items-center w-full max-w-3xl">
         
         {/* Monitor Outer Casing / Bezel */}
         <div className="relative flex flex-col items-center w-full bg-[#e3ded2] border-4 border-[#b8b3a7] rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] p-4 md:p-8 select-none z-10">
@@ -235,7 +258,7 @@ export default function UsePresenceData() {
                       <div className="flex flex-1 overflow-hidden">
                         
                         {/* Left Info Pane */}
-                        <div className="w-36 md:w-44 bg-[#7b9ebd] border-r border-[#002d96] p-2 flex flex-col gap-3 overflow-y-auto select-none">
+                        <div className="hidden sm:flex w-36 md:w-44 bg-[#7b9ebd] border-r border-[#002d96] p-2 flex flex-col gap-3 overflow-y-auto select-none">
                           {/* Pane Item 1: Links */}
                           <div className="bg-white rounded border border-[#002d96] shadow overflow-hidden">
                             <div className="bg-gradient-to-r from-[#215dc6] to-[#3d7bad] px-2 py-1 text-white font-bold flex items-center justify-between text-[10px] md:text-xs">
@@ -331,6 +354,52 @@ export default function UsePresenceData() {
                             {/* Description */}
                             <div className="text-[11px] md:text-[12px] leading-relaxed text-[#333333] text-justify font-sans bg-[#fbfbf8] border border-[#d2cfc2] rounded p-3 shadow-inner whitespace-pre-line">
                               {currentProject.description}
+                            </div>
+                            
+                            {/* Mobile-only Links and Tech Stack */}
+                            <div className="sm:hidden flex flex-col gap-3 border-t border-[#d2cfc2] pt-3 text-left">
+                              <div className="flex flex-wrap gap-3">
+                                {currentProject.demo && currentProject.demo !== "#" && (
+                                  <a 
+                                    href={currentProject.demo}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-1 text-[#002c91] font-semibold hover:underline no-underline text-xs"
+                                  >
+                                    <FcGlobe size={16} />
+                                    <span>Live Demo</span>
+                                  </a>
+                                )}
+                                {currentProject.github && currentProject.github !== "#" && (
+                                  <a 
+                                    href={currentProject.github}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-1 text-[#002c91] font-semibold hover:underline no-underline text-xs"
+                                  >
+                                    <FaGithub size={16} className="text-[#333]" />
+                                    <span>GitHub</span>
+                                  </a>
+                                )}
+                                {currentProject.title === "Quick Fare" && (
+                                  <a 
+                                    href={currentProject.demo}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-1 text-[#b57a00] font-semibold hover:underline no-underline text-xs"
+                                  >
+                                    <FcDocument size={16} />
+                                    <span>Report</span>
+                                  </a>
+                                )}
+                              </div>
+                              <div className="flex flex-wrap gap-1.5 mt-1">
+                                {currentProject.tech.map((t) => (
+                                  <span key={t} className="bg-white border border-[#7f9db9] px-2 py-0.5 rounded-sm font-mono text-[10px] text-[#002c91] font-semibold">
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
                             </div>
 
                           </motion.div>
@@ -434,6 +503,144 @@ export default function UsePresenceData() {
       <div className="w-28 h-8 bg-[#c7c1b3] border-x-4 border-[#a29c8e] -mt-1 shadow-md z-0" />
       <div className="w-72 h-4 bg-[#b8b3a7] border-4 border-t-[#c7c1b3] border-[#a29c8e] rounded-xl shadow-lg z-0" />
 
+      </div>
+
+      {/* Mobile Swipeable Retro XP Window View (Visible on mobile/tablet) */}
+      <div className="block md:hidden w-full max-w-lg mx-auto mt-6">
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="xp-window-bevel bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-xl flex flex-col font-sans text-xs text-[#333333] overflow-hidden"
+        >
+          {/* Title Bar */}
+          <div className="xp-title-bar-gradient px-2 py-1.5 flex items-center justify-between text-white font-bold select-none">
+            <div className="flex items-center gap-1.5 text-left">
+              <span className="text-[14px]">💻</span>
+              <span className="truncate max-w-[180px]">{currentProject.title} - Explorer</span>
+            </div>
+            <div className="flex items-center gap-1 select-none">
+              <div className="w-[18px] h-[18px] rounded bg-gradient-to-b from-[#7ca1e9] to-[#3b67c3] border border-[#0d2c6e] flex items-center justify-center font-bold text-[9px] text-white">_</div>
+              <div className="w-[18px] h-[18px] rounded bg-gradient-to-b from-[#7ca1e9] to-[#3b67c3] border border-[#0d2c6e] flex items-center justify-center font-bold text-[9px] text-white">□</div>
+              <div className="w-[18px] h-[18px] rounded bg-gradient-to-b from-[#f37a5a] to-[#c7321a] border border-[#7d1708] flex items-center justify-center font-bold text-[9px] text-white">X</div>
+            </div>
+          </div>
+
+          {/* Menu Bar */}
+          <div className="flex items-center gap-3 px-2 py-0.5 border-b border-white text-[10px] text-[#333] bg-[#ece9d8] select-none">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Favorites</span>
+          </div>
+
+          {/* Navigation Address bar (Includes XP Back/Forward Buttons) */}
+          <div className="flex items-center gap-1.5 p-1 border-b border-[#d2cfc2] bg-[#ece9d8] select-none">
+            <div className="flex items-center gap-1 px-1">
+              {/* Back Button */}
+              <button 
+                onClick={handlePrev}
+                className="relative w-7 h-7 bg-gradient-to-br from-[#8de63b] via-[#4cb813] to-[#257c09] border border-[#285d0d] shadow-[0_1px_2px_rgba(0,0,0,0.3)] flex items-center justify-center cursor-pointer hover:brightness-110 active:scale-95 transition-transform"
+                style={{ padding: 0, borderRadius: "50%" }}
+                title="Previous"
+              >
+                <div className="absolute top-0.5 left-0.5 w-2 h-1 bg-white/45 rounded-full blur-[0.2px]" />
+                <FaArrowLeft size={10} className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)]" />
+              </button>
+
+              {/* Forward Button */}
+              <button 
+                onClick={handleNext}
+                className="relative w-7 h-7 bg-gradient-to-br from-[#8de63b] via-[#4cb813] to-[#257c09] border border-[#285d0d] shadow-[0_1px_2px_rgba(0,0,0,0.3)] flex items-center justify-center cursor-pointer hover:brightness-110 active:scale-95 transition-transform"
+                style={{ padding: 0, borderRadius: "50%" }}
+                title="Next"
+              >
+                <div className="absolute top-0.5 left-0.5 w-2 h-1 bg-white/45 rounded-full blur-[0.2px]" />
+                <FaArrowRight size={10} className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)]" />
+              </button>
+            </div>
+            
+            {/* Address Field */}
+            <span className="text-[10px] text-[#555] font-mono select-all bg-white border border-[#7f9db9] px-2 py-0.5 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left">
+              C:\My Projects\{currentProject.title}
+            </span>
+          </div>
+
+          {/* Content Body */}
+          <div className="p-3 bg-white flex flex-col gap-3 min-h-[380px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentProject.title}
+                initial={{ x: 30, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -30, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="flex flex-col gap-3 flex-1"
+              >
+                {/* Image */}
+                {currentProject.image ? (
+                  <div className="xp-panel-bevel p-1 bg-[#f0f0f0] rounded flex justify-center h-40">
+                    <img
+                      src={currentProject.image}
+                      alt={currentProject.title}
+                      className="max-h-full rounded object-contain max-w-full border border-black/10 shadow-sm"
+                    />
+                  </div>
+                ) : (
+                  <div className={`w-full h-40 rounded flex items-center justify-center bg-gradient-to-br ${currentProject.gradient ?? "from-[#0058e6] to-[#002c91]"} text-white font-bold text-sm xp-panel-bevel`}>
+                    {currentProject.title}
+                  </div>
+                )}
+
+                {/* Description */}
+                <div className="text-[11px] leading-relaxed text-[#333333] text-justify font-sans bg-[#fbfbf8] border border-[#d2cfc2] rounded p-2.5 shadow-inner min-h-[100px] overflow-y-auto">
+                  {currentProject.description}
+                </div>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {currentProject.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="bg-white border border-[#7f9db9] px-2 py-0.5 rounded-sm font-mono text-[9px] text-[#002c91] font-semibold"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Action Buttons */}
+            <div className="flex items-center justify-between border-t border-[#d2cfc2] pt-2 mt-auto">
+              <span className="text-[9px] text-gray-500 font-sans italic select-none">
+                ← Swipe to browse →
+              </span>
+              <div className="flex gap-2">
+                {currentProject.demo && currentProject.demo !== "#" && (
+                  <a
+                    href={currentProject.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="xp-btn-blue px-3.5 py-1.5 !text-[10px] font-bold !text-white shadow hover:brightness-110 active:brightness-95 transition no-underline inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    Live Demo
+                  </a>
+                )}
+                {currentProject.github && currentProject.github !== "#" && (
+                  <a
+                    href={currentProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="xp-btn px-3.5 py-1.5 !text-[10px] font-bold text-[#333] shadow hover:bg-gray-100 active:brightness-95 transition no-underline inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
