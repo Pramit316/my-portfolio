@@ -20,7 +20,7 @@ const StickyNote = () => {
     return (
       <button
         onClick={() => setIsVisible(true)}
-        className="fixed right-6 top-24 z-30 xp-btn px-3 py-1 text-[11px] font-bold shadow-md animate-bounce select-none text-[#333333]"
+        className="fixed right-6 top-26 z-30 xp-btn px-3 py-1 text-[11px] font-bold shadow-md animate-bounce select-none text-[#333333]"
         title="Show Sticky Note"
       >
         📝 Show Note
@@ -30,7 +30,7 @@ const StickyNote = () => {
 
   return (
     <div
-      className="fixed right-6 top-24 z-30 w-[200px] bg-[#fffa9e] border border-[#d3cc7a] shadow-lg flex flex-col font-sans select-none text-slate-900 rounded-md overflow-hidden"
+      className="fixed right-1 top-18 z-30 w-[200px] bg-[#fffa9e] border border-[#d3cc7a] shadow-lg flex flex-col font-sans select-none text-slate-900 rounded-md overflow-hidden"
       style={{
         boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.25)",
         transform: "rotate(1deg)",

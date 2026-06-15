@@ -8,6 +8,7 @@ import SideMenu from "./components/common/SideMenu.jsx";
 import UsePresenceData from "./sections/Projects/UsePresenceData.js";
 import DesktopIcons from "./components/desktop/DesktopIcons.jsx";
 import StickyNote from "./components/desktop/StickyNote.jsx";
+import ClippyCompanion from "./components/desktop/ClippyCompanion.jsx";
 
 function App() {
   
@@ -21,6 +22,8 @@ function App() {
         <DesktopIcons />
         <StickyNote />
       </div>
+
+      <ClippyCompanion />
 
       <div className="relative z-10 flex flex-col w-full">
         <AppBar></AppBar>

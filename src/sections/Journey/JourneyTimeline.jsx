@@ -412,6 +412,7 @@ function TimelineCard({ stage, index }) {
           </p>
         </div>
 
+        {/* Center icon */}
         <div className="relative z-10 flex shrink-0 flex-col items-center">
           <div
             className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${stage.accent} shadow-lg shadow-cyan-900/30 ring-2 ring-white/10`}
