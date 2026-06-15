@@ -25,6 +25,189 @@ import { FaFlutter, FaReact } from "react-icons/fa6";
 
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
+// ── Retro XP Decorative Components ──────────────────────────────────────────
+
+/** Tiny Windows XP–style error / info dialog bubble */
+const XpDialog = ({ title, message, style, type = "error" }) => {
+  const iconColor = type === "error" ? "#e00" : type === "info" ? "#0078d4" : "#e8a000";
+  const iconChar = type === "error" ? "✕" : type === "info" ? "ℹ" : "⚠";
+  return (
+    <div
+      className="absolute z-20 select-none"
+      style={{ width: 220, ...style }}
+    >
+      <div
+        style={{
+          border: "2px solid #0054e3",
+          borderRadius: "4px 4px 4px 4px",
+          boxShadow: "2px 2px 0 #000, inset 1px 1px 0 #fff",
+          background: "#ece9d8",
+          fontFamily: "Tahoma, sans-serif",
+        }}
+      >
+        {/* Title bar */}
+        <div
+          style={{
+            background: "linear-gradient(to right, #0058e6 0%, #3a93ff 30%, #0055d4 100%)",
+            padding: "3px 6px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            borderRadius: "2px 2px 0 0",
+          }}
+        >
+          <span style={{ color: "#fff", fontSize: 11, fontWeight: "bold", letterSpacing: 0.3 }}>
+            {title}
+          </span>
+          <span
+            style={{
+              width: 16, height: 16, background: "linear-gradient(135deg,#e75436,#891300)",
+              border: "1px solid #701602", borderRadius: 2, display: "flex",
+              alignItems: "center", justifyContent: "center",
+              color: "#fff", fontSize: 9, fontWeight: "bold", cursor: "default",
+            }}
+          >✕</span>
+        </div>
+        {/* Body */}
+        <div style={{ padding: "10px 10px 8px", display: "flex", gap: 8, alignItems: "flex-start" }}>
+          <span style={{ fontSize: 22, color: iconColor, lineHeight: 1 }}>{iconChar}</span>
+          <p style={{ margin: 0, fontSize: 11, color: "#1a1a1a", lineHeight: 1.4 }}>{message}</p>
+        </div>
+        {/* OK Button */}
+        <div style={{ padding: "4px 10px 8px", display: "flex", justifyContent: "center" }}>
+          <button
+            style={{
+              background: "linear-gradient(to bottom,#fff 0%,#ece9d8 100%)",
+              border: "1px solid #707070",
+              borderRadius: 3, padding: "2px 20px",
+              fontSize: 11, fontFamily: "Tahoma,sans-serif", cursor: "default",
+              boxShadow: "inset -1px -1px 1px rgba(0,0,0,0.15)",
+            }}
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/** Retro XP-style progress bar */
+const XpProgressBar = ({ label, value, style }) => (
+  <div
+    className="absolute z-20 select-none"
+    style={{ width: 200, fontFamily: "Tahoma, sans-serif", ...style }}
+  >
+    <div
+      style={{
+        background: "#ece9d8", border: "2px solid #0054e3",
+        borderRadius: 3, padding: "8px 10px",
+        boxShadow: "2px 2px 0 #000, inset 1px 1px 0 #fff",
+      }}
+    >
+      <div
+        style={{
+          background: "linear-gradient(to right,#0058e6,#3a93ff,#0055d4)",
+          padding: "2px 6px", marginBottom: 6, borderRadius: "1px 1px 0 0",
+        }}
+      >
+        <span style={{ color: "#fff", fontSize: 10, fontWeight: "bold" }}>
+          {label}
+        </span>
+      </div>
+      <div
+        style={{
+          background: "#fff", border: "1px inset #7f9db9",
+          height: 16, borderRadius: 1, overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: `${value}%`, height: "100%",
+            background: "linear-gradient(to bottom, #7fb7f5 0%, #0053e1 50%, #0040b0 100%)",
+            backgroundSize: "20px 100%",
+          }}
+        />
+      </div>
+      <div style={{ fontSize: 10, color: "#333", marginTop: 4 }}>
+        Loading… {value}%
+      </div>
+    </div>
+  </div>
+);
+
+/** Retro floppy disk SVG icon */
+const FloppyDisk = ({ style, color = "#0054e3" }) => (
+  <div className="absolute z-20 select-none opacity-70 hover:opacity-100 transition-opacity" style={style}>
+    <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="42" height="42" rx="3" fill={color} stroke="#fff" strokeWidth="1.5"/>
+      <rect x="8" y="2" width="24" height="16" rx="1" fill="#cce4ff" stroke="#fff" strokeWidth="1"/>
+      <rect x="14" y="4" width="8" height="12" rx="0.5" fill="#fff" opacity="0.6"/>
+      <rect x="6" y="22" width="34" height="18" rx="1" fill="#e8f2ff" stroke="#fff" strokeWidth="0.5"/>
+      <rect x="10" y="25" width="26" height="3" rx="0.5" fill="#aac8e8"/>
+      <rect x="10" y="30" width="18" height="3" rx="0.5" fill="#aac8e8"/>
+    </svg>
+  </div>
+);
+
+/** Retro pixel cursor decoration */
+const PixelCursor = ({ style }) => (
+  <div className="absolute z-20 select-none opacity-60" style={style}>
+    <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
+      <polygon points="2,2 2,22 7,17 11,26 13,25 9,16 16,16" fill="white" stroke="black" strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  </div>
+);
+
+/** XP Tooltip */
+const XpTooltip = ({ text, style }) => (
+  <div
+    className="absolute z-20 select-none"
+    style={{
+      background: "#ffffcc",
+      border: "1px solid #000",
+      padding: "3px 7px",
+      fontSize: 11,
+      fontFamily: "Tahoma, sans-serif",
+      color: "#000",
+      boxShadow: "1px 1px 0 #888",
+      whiteSpace: "nowrap",
+      ...style,
+    }}
+  >
+    {text}
+  </div>
+);
+
+/** Retro folder icon */
+const FolderIcon = ({ label, style, color = "#f0c040" }) => (
+  <div className="absolute z-20 select-none flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity cursor-default" style={style}>
+    <svg width="52" height="44" viewBox="0 0 52 44" fill="none">
+      <path d="M2 10 Q2 6 6 6 L20 6 L24 10 H46 Q50 10 50 14 V38 Q50 42 46 42 H6 Q2 42 2 38 Z" fill={color} stroke="#c8960a" strokeWidth="1.2"/>
+      <path d="M2 14 H50 V38 Q50 42 46 42 H6 Q2 42 2 38 Z" fill="#f5d060" stroke="#c8960a" strokeWidth="1"/>
+    </svg>
+    <span style={{ fontSize: 10, fontFamily: "Tahoma,sans-serif", color: "#fff", textShadow: "1px 1px 2px #000", textAlign: "center", maxWidth: 70, lineHeight: 1.2 }}>
+      {label}
+    </span>
+  </div>
+);
+
+/** Scanline overlay strip for CRT feel */
+const ScanlineStrip = ({ style }) => (
+  <div
+    className="absolute z-10 pointer-events-none"
+    style={{
+      width: 160,
+      height: 80,
+      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 4px)",
+      border: "1px solid rgba(255,255,255,0.12)",
+      borderRadius: 2,
+      opacity: 0.55,
+      ...style,
+    }}
+  />
+);
+
 const MyJourney = () => {
   const containerRef = useRef(null);
   const pathRef1 = useRef(null);
@@ -190,7 +373,7 @@ const MyJourney = () => {
     <div
       id="journey"
       ref={containerRef}
-      className="w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-20 hidden lg:block min-h-[5600px] relative"
+      className="w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-20 hidden lg:block min-h-[4600px] relative"
     >
       {/* Ambient glow effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
@@ -208,8 +391,7 @@ const MyJourney = () => {
 
       <div
         className="relative mx-auto"
-        style={{ width: "100%", maxWidth: 1024, height: 5000 }}
-
+        style={{ width: "100%", maxWidth: 1024, height: 4100 }}
       >
         <svg
           viewBox="0 0 1234 4306"
@@ -339,215 +521,307 @@ const MyJourney = () => {
           </defs>
         </svg>
 
-        {/* School */}
+        {/* ── SCHOOL ERA ─────────────────────────────────────────────── */}
         <div
-          className="absolute z-10 text-[100px] -rotate-15 italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 p-8"
-          style={{ top: 320, left: "28%" }}
+          className="absolute z-10 text-[110px] -rotate-15 italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 p-8"
+          style={{ top: 290, left: "26%" }}
         >
           School
         </div>
 
         <FaPencilAlt
-          className="absolute text-[40px] -rotate-10 text-amber-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-amber-300 cursor-pointer drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]"
-          style={{ top: 550, left: "0%" }}
+          className="absolute -rotate-10 text-amber-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-amber-300 cursor-pointer drop-shadow-[0_0_10px_rgba(251,191,36,0.7)]"
+          style={{ top: 530, left: "1%", fontSize: 68 }}
         />
 
+        {/* XP Tooltip near pencil */}
+        <XpTooltip text="📝 Homework mode: ON" style={{ top: 610, left: "0%" }} />
+
         <FaBookOpen
-          className="absolute text-[60px] -rotate-10 text-blue-400 transition-all duration-300 hover:scale-110 hover:-rotate-15 hover:text-blue-300 cursor-pointer drop-shadow-[0_0_8px_rgba(96,165,250,0.6)]"
-          style={{ top: 700, left: "40%" }}
+          className="absolute -rotate-10 text-blue-400 transition-all duration-300 hover:scale-110 hover:-rotate-15 hover:text-blue-300 cursor-pointer drop-shadow-[0_0_10px_rgba(96,165,250,0.7)]"
+          style={{ top: 670, left: "40%", fontSize: 82 }}
+        />
+
+        {/* Floppy disk near school */}
+        <FloppyDisk style={{ top: 770, left: "8%" }} color="#3a7bd5" />
+
+        {/* XP Error dialog – school era */}
+        <XpDialog
+          title="System Alert"
+          message="Homework not submitted. Please try again."
+          type="error"
+          style={{ top: 820, left: "55%" }}
         />
 
         <SiGamebanana
-          className="absolute text-[50px] -rotate-10 text-yellow-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-yellow-300 cursor-pointer drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]"
-          style={{ top: 1480, left: "28%" }}
+          className="absolute -rotate-10 text-yellow-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-yellow-300 cursor-pointer drop-shadow-[0_0_10px_rgba(250,204,21,0.7)]"
+          style={{ top: 1390, left: "28%", fontSize: 72 }}
         />
 
         <FaGuitar
-          className="absolute text-[60px] -rotate-10 text-rose-400 transition-all duration-300 hover:scale-110 hover:-rotate-12 hover:text-rose-300 cursor-pointer drop-shadow-[0_0_8px_rgba(251,113,133,0.6)]"
-          style={{ top: 1200, left: "100%" }}
+          className="absolute -rotate-10 text-rose-400 transition-all duration-300 hover:scale-110 hover:-rotate-12 hover:text-rose-300 cursor-pointer drop-shadow-[0_0_10px_rgba(251,113,133,0.7)]"
+          style={{ top: 1130, left: "82%", fontSize: 84 }}
         />
 
         <IoIosBasketball
-          className="absolute text-[50px] -rotate-10 text-orange-500 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-orange-400 cursor-pointer drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"
-          style={{ top: 900, left: "70%" }}
+          className="absolute -rotate-10 text-orange-500 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-orange-400 cursor-pointer drop-shadow-[0_0_10px_rgba(249,115,22,0.7)]"
+          style={{ top: 860, left: "68%", fontSize: 72 }}
         />
 
         <IoMdFootball
-          className="absolute text-[40px] -rotate-10 text-slate-300 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-white cursor-pointer drop-shadow-[0_0_8px_rgba(203,213,225,0.6)]"
-          style={{ top: 1500, left: "70%" }}
+          className="absolute -rotate-10 text-slate-300 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-white cursor-pointer drop-shadow-[0_0_10px_rgba(203,213,225,0.7)]"
+          style={{ top: 1410, left: "68%", fontSize: 60 }}
         />
 
-        <MdOutlineScience
-          className="absolute text-[50px] -rotate-15 text-green-400 transition-all duration-300 hover:scale-110 hover:-rotate-5 hover:text-green-300 cursor-pointer drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]"
-          style={{ top: 1900, left: "80%" }}
-        />
+        {/* Folder icon for school files */}
+        <FolderIcon label="My Homework" style={{ top: 970, left: "3%" }} />
 
-        <IoGameControllerOutline
-          className="absolute text-[50px] -rotate-15 text-purple-400 transition-all duration-300 hover:scale-110 hover:-rotate-20 hover:text-purple-300 cursor-pointer drop-shadow-[0_0_8px_rgba(192,132,252,0.6)]"
-          style={{ top: 2050, left: "20%" }}
-        />
+        {/* Pixel cursor near folder */}
+        <PixelCursor style={{ top: 1000, left: "11%" }} />
 
-        <TbMathIntegralX
-          className="absolute text-[70px] -rotate-15 text-cyan-400 transition-all duration-300 hover:scale-110 hover:-rotate-25 hover:text-cyan-300 cursor-pointer drop-shadow-[0_0_10px_rgba(34,211,238,0.6)]"
-          style={{ top: 2550, left: "0%" }}
-        />
-
-        <CiCalculator1
-          className="absolute text-[70px] -rotate-15 text-indigo-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-indigo-300 cursor-pointer drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]"
-          style={{ top: 2750, left: "30%" }}
-        />
-
-        <FaVirusCovid
-          className="absolute text-[70px] -rotate-15 text-red-500 transition-all duration-300 hover:scale-110 hover:rotate-15 hover:text-red-400 cursor-pointer drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]"
-          style={{ top: 2350, left: "30%" }}
-        />
-
-        <TbMathIntegrals
-          className="absolute text-[70px] -rotate-15 text-teal-400 transition-all duration-300 hover:scale-110 hover:-rotate-5 hover:text-teal-300 cursor-pointer drop-shadow-[0_0_10px_rgba(45,212,191,0.6)]"
-          style={{ top: 3400, left: "0%" }}
-        />
-
-        <FaComputer
-          className="absolute text-[60px] text-blue-300 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-blue-200 cursor-pointer drop-shadow-[0_0_10px_rgba(147,197,253,0.6)]"
-          style={{ top: 3200, left: "50%" }}
-        />
-
-        <GiGraduateCap
-          className="absolute text-[60px] text-yellow-400 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-yellow-300 cursor-pointer drop-shadow-[0_0_10px_rgba(250,204,21,0.6)]"
-          style={{ top: 3500, left: "80%" }}
-        />
-
-        <TbCircuitDiode
-          className="absolute text-[30px] -rotate-15 text-emerald-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-emerald-300 cursor-pointer drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]"
-          style={{ top: 3500, left: "33%" }}
-        />
-
-        <TbCircuitSwitchOpen
-          className="absolute text-[30px] text-lime-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-lime-300 cursor-pointer drop-shadow-[0_0_8px_rgba(163,230,53,0.6)]"
-          style={{ top: 3600, left: "50%" }}
-        />
-
-        <TbCircuitGround
-          className="absolute text-[30px] text-amber-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-amber-300 cursor-pointer drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]"
-          style={{ top: 3720, left: "72%" }}
-        />
-
-        <TbCircuitCapacitorPolarized
-          className="absolute text-[30px] text-sky-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-sky-300 cursor-pointer drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"
-          style={{ top: 3920, left: "82%" }}
-        />
-
-        <PiCircuitry
-          className="absolute text-[50px] rotate-15 text-violet-400 transition-all duration-300 hover:scale-110 hover:rotate-25 hover:text-violet-300 cursor-pointer drop-shadow-[0_0_10px_rgba(167,139,250,0.6)]"
-          style={{ top: 3800, left: "20%" }}
-        />
-
-        <TbCircuitCell
-          className="absolute text-[30px] text-fuchsia-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-fuchsia-300 cursor-pointer drop-shadow-[0_0_8px_rgba(232,121,249,0.6)]"
-          style={{ top: 4120, left: "62%" }}
-        />
-
-        <GiMicrochip
-          className="absolute text-[50px] text-indigo-400 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-indigo-300 cursor-pointer drop-shadow-[0_0_10px_rgba(129,140,248,0.6)]"
-          style={{ top: 4200, left: "10%" }}
-        />
-
-        <FiYoutube
-          className="absolute text-[50px] rotate-15 text-red-500 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-red-400 cursor-pointer drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]"
-          style={{ top: 4400, left: "100%" }}
-        />
-
+        {/* ── GEMS ERA ──────────────────────────────────────────────── */}
         <div
-          className="absolute z-10 text-[100px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 px-8"
-          style={{ top: 930, left: "2%" }}
+          className="absolute z-10 text-[110px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 px-8"
+          style={{ top: 890, left: "1%" }}
         >
           GEMS
         </div>
 
+        {/* Scanline strip – CRT vibe near GEMS */}
+        <ScanlineStrip style={{ top: 1060, left: "18%", opacity: 0.4 }} />
+
+        <MdOutlineScience
+          className="absolute -rotate-15 text-green-400 transition-all duration-300 hover:scale-110 hover:-rotate-5 hover:text-green-300 cursor-pointer drop-shadow-[0_0_10px_rgba(74,222,128,0.7)]"
+          style={{ top: 1820, left: "78%", fontSize: 74 }}
+        />
+
+        <IoGameControllerOutline
+          className="absolute -rotate-15 text-purple-400 transition-all duration-300 hover:scale-110 hover:-rotate-20 hover:text-purple-300 cursor-pointer drop-shadow-[0_0_10px_rgba(192,132,252,0.7)]"
+          style={{ top: 1960, left: "18%", fontSize: 72 }}
+        />
+
+        {/* XP info dialog near game controller */}
+        <XpDialog
+          title="Game Tips"
+          message="Press ↑↑↓↓←→←→BA to unlock secret mode!"
+          type="info"
+          style={{ top: 2060, left: "3%" }}
+        />
+
+        {/* ── UNITY / PIXEL ART ERA ──────────────────────────────────── */}
         <FaUnity
-          className="absolute text-[50px] -rotate-10 text-slate-100 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-white cursor-pointer drop-shadow-[0_0_10px_rgba(241,245,249,0.6)]"
-          style={{ top: 1480,  }}
+          className="absolute -rotate-10 text-slate-100 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-white cursor-pointer drop-shadow-[0_0_12px_rgba(241,245,249,0.8)]"
+          style={{ top: 1395, left: "0%", fontSize: 72 }}
         />
 
         <div
-          className="absolute z-10 text-[70px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-400  p-10"
-          style={{ top: 1520, left: "-4%" }}
+          className="absolute z-10 text-[78px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-400 p-10"
+          style={{ top: 1430, left: "-4%" }}
         >
           Unity
         </div>
 
         <div
-          className="absolute z-10 text-[70px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-400 p-10"
-          style={{ top: 1530, left: "20%" }}
+          className="absolute z-10 text-[78px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-400 p-10"
+          style={{ top: 1440, left: "20%" }}
         >
           PixelArt
         </div>
 
-        <div
-          className="absolute z-10 text-[80px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-400"
-          style={{ top: 2300, left: "78%" }}
-        >
-          Uniglobe College
-        </div>
+        {/* Floppy disk near Unity – "saving game" */}
+        <FloppyDisk style={{ top: 1590, left: "52%" }} color="#a855f7" />
 
+        {/* XP Progress bar – loading level */}
+        <XpProgressBar label="Loading Level..." value={67} style={{ top: 1660, left: "55%" }} />
+
+        {/* ── HIGH SCHOOL ERA ──────────────────────────────────────── */}
         <div
-          className="absolute z-1000000 text-[80px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-400 rotate-15 p-10"
-          style={{ top: 1980, left: "60%" }}
+          className="absolute z-[1000000] text-[88px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-red-400 rotate-15 p-10"
+          style={{ top: 1890, left: "60%" }}
         >
           High School
         </div>
 
+        {/* Pixel cursor near High School label */}
+        <PixelCursor style={{ top: 1978, left: "59%" }} />
+
+        {/* ── UNIGLOBE / COVID ERA ──────────────────────────────────── */}
         <div
-          className="absolute z-10 text-[80px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-400 -rotate-15 p-2"
-          style={{ top: 3850, left: "45%" }}
+          className="absolute z-10 text-[88px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-400"
+          style={{ top: 2210, left: "76%" }}
+        >
+          Uniglobe College
+        </div>
+
+        <TbMathIntegralX
+          className="absolute -rotate-15 text-cyan-400 transition-all duration-300 hover:scale-110 hover:-rotate-25 hover:text-cyan-300 cursor-pointer drop-shadow-[0_0_12px_rgba(34,211,238,0.7)]"
+          style={{ top: 2460, left: "0%", fontSize: 96 }}
+        />
+
+        <CiCalculator1
+          className="absolute -rotate-15 text-indigo-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-indigo-300 cursor-pointer drop-shadow-[0_0_12px_rgba(129,140,248,0.7)]"
+          style={{ top: 2650, left: "28%", fontSize: 96 }}
+        />
+
+        <FaVirusCovid
+          className="absolute -rotate-15 text-red-500 transition-all duration-300 hover:scale-110 hover:rotate-15 hover:text-red-400 cursor-pointer drop-shadow-[0_0_12px_rgba(239,68,68,0.7)]"
+          style={{ top: 2260, left: "28%", fontSize: 96 }}
+        />
+
+        {/* XP Warning dialog – covid era */}
+        <XpDialog
+          title="Warning"
+          message="COVID-19 detected. Please stay home and wash your hands."
+          type="warning"
+          style={{ top: 2390, left: "35%" }}
+        />
+
+        {/* Scanline strip near math */}
+        <ScanlineStrip style={{ top: 2720, left: "0%", opacity: 0.3, width: 120, height: 60 }} />
+
+        <TbMathIntegrals
+          className="absolute -rotate-15 text-teal-400 transition-all duration-300 hover:scale-110 hover:-rotate-5 hover:text-teal-300 cursor-pointer drop-shadow-[0_0_12px_rgba(45,212,191,0.7)]"
+          style={{ top: 3310, left: "0%", fontSize: 96 }}
+        />
+
+        <FaComputer
+          className="absolute text-blue-300 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-blue-200 cursor-pointer drop-shadow-[0_0_12px_rgba(147,197,253,0.7)]"
+          style={{ top: 3110, left: "48%", fontSize: 88 }}
+        />
+
+        {/* XP tooltip near computer icon */}
+        <XpTooltip text="My Computer" style={{ top: 3210, left: "51%" }} />
+
+        <GiGraduateCap
+          className="absolute text-yellow-400 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-yellow-300 cursor-pointer drop-shadow-[0_0_12px_rgba(250,204,21,0.7)]"
+          style={{ top: 3410, left: "78%", fontSize: 88 }}
+        />
+
+        {/* ── COLLEGE ERA ──────────────────────────────────────────── */}
+        <div
+          className="absolute z-10 text-[88px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-400 -rotate-15 p-2"
+          style={{ top: 3760, left: "44%" }}
         >
           College
         </div>
 
+        <TbCircuitDiode
+          className="absolute -rotate-15 text-emerald-400 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-emerald-300 cursor-pointer drop-shadow-[0_0_10px_rgba(52,211,153,0.7)]"
+          style={{ top: 3410, left: "30%", fontSize: 52 }}
+        />
+
+        <TbCircuitSwitchOpen
+          className="absolute text-lime-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-lime-300 cursor-pointer drop-shadow-[0_0_10px_rgba(163,230,53,0.7)]"
+          style={{ top: 3510, left: "48%", fontSize: 52 }}
+        />
+
+        <TbCircuitGround
+          className="absolute text-amber-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-amber-300 cursor-pointer drop-shadow-[0_0_10px_rgba(251,191,36,0.7)]"
+          style={{ top: 3630, left: "70%", fontSize: 52 }}
+        />
+
+        <TbCircuitCapacitorPolarized
+          className="absolute text-sky-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-sky-300 cursor-pointer drop-shadow-[0_0_10px_rgba(56,189,248,0.7)]"
+          style={{ top: 3830, left: "80%", fontSize: 52 }}
+        />
+
+        <PiCircuitry
+          className="absolute rotate-15 text-violet-400 transition-all duration-300 hover:scale-110 hover:rotate-25 hover:text-violet-300 cursor-pointer drop-shadow-[0_0_12px_rgba(167,139,250,0.7)]"
+          style={{ top: 3720, left: "18%", fontSize: 72 }}
+        />
+
+        <TbCircuitCell
+          className="absolute text-fuchsia-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-fuchsia-300 cursor-pointer drop-shadow-[0_0_10px_rgba(232,121,249,0.7)]"
+          style={{ top: 4020, left: "60%", fontSize: 52 }}
+        />
+
+        <GiMicrochip
+          className="absolute text-indigo-400 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-indigo-300 cursor-pointer drop-shadow-[0_0_12px_rgba(129,140,248,0.7)]"
+          style={{ top: 4110, left: "8%", fontSize: 76 }}
+        />
+
+        {/* Folder icon for college */}
+        <FolderIcon label="Projects" style={{ top: 3580, left: "2%" }} color="#3a7bd5" />
+
+        {/* Floppy near microchip */}
+        <FloppyDisk style={{ top: 4210, left: "30%" }} color="#6366f1" />
+
+        {/* Scanline strip near circuit zone */}
+        <ScanlineStrip style={{ top: 3470, left: "58%", opacity: 0.35, width: 140, height: 70 }} />
+
+        {/* ── KEC ERA ──────────────────────────────────────────────── */}
         <div
-          className="absolute z-10 text-[100px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-300 to-orange-400 -rotate-8 text-center p-4"
-          style={{ top: 4200, left: "37%" }}
+          className="absolute z-10 text-[108px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-300 to-orange-400 -rotate-8 text-center p-4"
+          style={{ top: 4110, left: "34%" }}
         >
           Kathmandu Engineering
           <br />
           College
         </div>
 
+        {/* XP info dialog – KEC */}
+        <XpDialog
+          title="Achievement Unlocked"
+          message="Welcome to KEC! Your coding adventure begins now."
+          type="info"
+          style={{ top: 4270, left: "4%" }}
+        />
+
+        {/* Pixel cursor near KEC */}
+        <PixelCursor style={{ top: 4310, left: "24%" }} />
+
         <SiKotlin
-          className="absolute text-[50px] text-purple-500 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-purple-400 cursor-pointer drop-shadow-[0_0_10px_rgba(168,85,247,0.7)]"
-          style={{ top: 2780, left: "85%" }}
+          className="absolute text-purple-500 transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-purple-400 cursor-pointer drop-shadow-[0_0_12px_rgba(168,85,247,0.8)]"
+          style={{ top: 2690, left: "82%", fontSize: 74 }}
         />
 
         <div
-          className="absolute z-10 text-[100px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
-          style={{ top: 2740, left: "90%" }}
+          className="absolute z-10 text-[108px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
+          style={{ top: 2650, left: "88%" }}
         >
           Kotlin
         </div>
 
+        <FiYoutube
+          className="absolute rotate-15 text-red-500 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:text-red-400 cursor-pointer drop-shadow-[0_0_12px_rgba(239,68,68,0.9)]"
+          style={{ top: 4310, left: "82%", fontSize: 72 }}
+        />
+
+        {/* XP Tooltip near YouTube */}
+        <XpTooltip text="📺 Watch tutorials!" style={{ top: 4400, left: "80%" }} />
+
+        {/* ── FLUTTER & REACT ──────────────────────────────────────── */}
         <FaFlutter
-          className="absolute text-[68px] text-sky-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-sky-300 cursor-pointer drop-shadow-[0_0_12px_rgba(56,189,248,0.8)]"
-          style={{ top: 5034, left: "14%" }}
+          className="absolute text-sky-400 transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:text-sky-300 cursor-pointer drop-shadow-[0_0_14px_rgba(56,189,248,0.9)]"
+          style={{ top: 4830, left: "13%", fontSize: 92 }}
         />
 
         <div
-          className="absolute z-10 text-[100px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-blue-400 p-[10px]"
-          style={{ top: 4990, left: "22%" }}
+          className="absolute z-10 text-[108px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-blue-400 p-[10px]"
+          style={{ top: 4788, left: "21%" }}
         >
           Flutter
         </div>
 
         <FaReact
-          className="absolute text-[70px] text-cyan-400 transition-all duration-300 hover:scale-110 hover:rotate-[360deg] hover:text-cyan-300 cursor-pointer drop-shadow-[0_0_12px_rgba(34,211,238,0.8)]"
-          style={{ top: 5034, left: "73%" }}
+          className="absolute text-cyan-400 transition-all duration-300 hover:scale-110 hover:rotate-[360deg] hover:text-cyan-300 cursor-pointer drop-shadow-[0_0_14px_rgba(34,211,238,0.9)]"
+          style={{ top: 4830, left: "71%", fontSize: 96 }}
         />
 
         <div
-          className="absolute z-10 text-[100px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 p-[10px]"
-          style={{ top: 4990, left: "82%" }}
+          className="absolute z-10 text-[108px] italianno-regular text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 p-[10px]"
+          style={{ top: 4788, left: "80%" }}
         >
           React
         </div>
+
+        {/* XP Progress bar at the bottom – "Loading future..." */}
+        <XpProgressBar label="Loading future..." value={42} style={{ top: 4950, left: "42%" }} />
+
+        {/* Final floppy disks at very bottom */}
+        <FloppyDisk style={{ top: 4960, left: "12%" }} color="#0ea5e9" />
+        <FloppyDisk style={{ top: 4960, left: "80%" }} color="#22d3ee" />
+
       </div>
     </div>
   );
