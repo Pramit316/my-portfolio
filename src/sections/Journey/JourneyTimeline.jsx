@@ -117,8 +117,8 @@ const bright = (n) => Math.min(0.9, n);
 
 const SCATTERED_LIFE_ICONS = [
   // Phase 1 — School era
-  { id: "guitar-1", Icon: FaGuitar, color: "text-rose-700", size: "text-5xl md:text-6xl", rotate: "-rotate-12", top: "3%", left: "3%", delay: "0s", opacity: bright(0.62) },
-  { id: "basketball-1", Icon: IoIosBasketball, color: "text-orange-700", size: "text-5xl md:text-6xl", rotate: "rotate-12", top: "6%", left: "83%", delay: "0.8s", opacity: bright(0.58) },
+  { id: "guitar-1", Icon: FaGuitar, color: "text-indigo-300", size: "text-5xl md:text-6xl", rotate: "-rotate-12", top: "3%", left: "3%", delay: "0s", opacity: bright(0.62) },
+  { id: "basketball-1", Icon: IoIosBasketball, color: "text-emerald-800", size: "text-5xl md:text-6xl", rotate: "rotate-12", top: "6%", left: "83%", delay: "0.8s", opacity: bright(0.58) },
   { id: "football-1", Icon: IoMdFootball, color: "text-slate-700", size: "text-4xl md:text-5xl", rotate: "-rotate-6", top: "14%", left: "30%", delay: "1.2s", opacity: bright(0.52) },
   { id: "guitar-2", Icon: FaGuitar, color: "text-rose-700", size: "text-4xl md:text-5xl", rotate: "rotate-[20deg]", top: "20%", left: "80%", delay: "2s", opacity: bright(0.48) },
   { id: "calculator", Icon: CiCalculator1, color: "text-indigo-800", size: "text-5xl md:text-6xl", rotate: "-rotate-6", top: "20%", left: "3%", delay: "0.6s", opacity: bright(0.55) },
@@ -129,7 +129,7 @@ const SCATTERED_LIFE_ICONS = [
   { id: "controller", Icon: IoGameControllerOutline, color: "text-[#1a4faa]", size: "text-5xl md:text-6xl", rotate: "-rotate-12", top: "35%", left: "3%", delay: "1s", opacity: bright(0.60) },
   { id: "calculus", Icon: TbMathIntegralX, color: "text-[#1a4faa]", size: "text-6xl md:text-7xl", rotate: "rotate-6", top: "38%", left: "85%", delay: "1.8s", opacity: bright(0.58) },
   { id: "calculator-2", Icon: CiCalculator1, color: "text-indigo-800", size: "text-5xl md:text-6xl", rotate: "-rotate-6", top: "42%", left: "58%", delay: "0.6s", opacity: bright(0.55) },
-  { id: "corona", Icon: FaVirusCovid, color: "text-red-800", size: "text-5xl md:text-6xl", rotate: "rotate-12", top: "50%", left: "88%", delay: "2.2s", opacity: bright(0.55) },
+  { id: "corona", Icon: FaVirusCovid, color: "text-indigo-800", size: "text-5xl md:text-6xl", rotate: "rotate-12", top: "50%", left: "88%", delay: "2.2s", opacity: bright(0.55) },
 
   // Phase 3 — College / engineering
   { id: "computer-1", Icon: FaComputer, color: "text-blue-800", size: "text-5xl md:text-6xl", rotate: "-rotate-6", top: "56%", left: "5%", delay: "1.4s", opacity: bright(0.58) },
@@ -435,21 +435,23 @@ const JourneyTimeline = () => {
       className="relative w-full overflow-hidden py-24 px-6 md:px-14 lg:px-20"
     >
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: -16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative z-10 text-center"
-        >
-          <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Timeline</p>
-          <h2 className="mt-3 py-2 text-slate-955 text-4xl font-black md:text-5xl leading-tight font-sans">
-            My Journey
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-900 font-sans font-medium">
-            From school and games to engineering.
-          </p>
-        </motion.div>
+        <div className="w-full max-w-6xl mx-auto mb-16 relative z-10 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="w-full px-4 py-8 md:py-10 rounded-3xl bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex flex-col items-center text-center"
+          >
+            <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Timeline</p>
+            <h2 className="mt-3 py-2 text-slate-955 text-4xl font-black md:text-5xl leading-tight font-sans">
+              My Journey
+            </h2>
+            <p className="mt-3 text-slate-900 text-base md:text-lg max-w-2xl mx-auto font-sans font-medium">
+              From school and games to engineering.
+            </p>
+          </motion.div>
+        </div>
 
         <div className="relative mt-20">
           <div className="relative">

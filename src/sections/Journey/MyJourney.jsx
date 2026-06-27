@@ -380,14 +380,18 @@ const MyJourney = () => {
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
       <div className="absolute top-2/3 left-1/3 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
       
-      <motion.h1 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-300 text-6xl font-bold p-20 text-center tracking-wider"
-      >
-        My Journey
-      </motion.h1>
+      <div className="flex justify-center pt-16 pb-12 relative z-20">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="inline-block px-12 py-6 bg-slate-900/50 backdrop-blur-md border border-slate-700/50 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+        >
+          <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-300 text-5xl lg:text-6xl font-bold text-center tracking-wider m-0">
+            My Journey
+          </h1>
+        </motion.div>
+      </div>
 
       <div
         className="relative mx-auto"

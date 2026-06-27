@@ -64,14 +64,16 @@ const ContactMe = () => {
     <section id="contact" className="relative flex flex-col justify-center items-center w-full mt-10 sm:mt-20 py-8 sm:py-16">
       
       {/* Section Header */}
-      <div className="text-center mb-4 sm:mb-6 relative z-10 px-4">
-        <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Get In Touch</p>
-        <h2 className="mt-3 py-2 text-slate-955 text-4xl md:text-5xl font-black leading-tight font-sans">
-          Contact Me
-        </h2>
-        <p className="mt-3 text-slate-900 text-base md:text-lg max-w-xl mx-auto font-sans font-medium">
-          Have a question, an idea, or want to collaborate? Drop a message below and let's connect.
-        </p>
+      <div className="w-full max-w-6xl mx-auto mb-12 sm:mb-16 relative z-10 px-4">
+        <div className="w-full px-4 py-8 md:py-10 rounded-3xl bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex flex-col items-center text-center">
+          <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Get In Touch</p>
+          <h2 className="mt-3 py-2 text-slate-955 text-4xl md:text-5xl font-black leading-tight font-sans">
+            Contact Me
+          </h2>
+          <p className="mt-3 text-slate-900 text-base md:text-lg max-w-xl mx-auto font-sans font-medium">
+            Have a question, an idea, or want to collaborate? Drop a message below and let's connect.
+          </p>
+        </div>
       </div>
 
       {/* Outer XP Dialog Box Wrapper */}

@@ -221,17 +221,19 @@ const MyProjects = () => {
       className="flex justify-center bg-gradient-to-b from-[#040712] via-[#090f24] to-[#040712] py-24"
     >
       <div className="w-full max-w-6xl px-4">
-        <div className="text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">
-            Work
-          </p>
-          <h2 className="mt-3 py-2 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl md:text-5xl font-semibold tracking-tight text-transparent leading-tight">
-            Featured Projects
-          </h2>
-          <p className="mt-5 text-slate-400 text-lg max-w-2xl mx-auto">
-            A selection of things I have been building recently – from full-stack
-            applications to mobile experiences and interactive web interfaces.
-          </p>
+        <div className="flex justify-center w-full relative z-10 px-4">
+          <div className="text-center inline-block px-8 py-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl shadow-black/20">
+            <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/80">
+              Work
+            </p>
+            <h2 className="mt-3 py-2 bg-gradient-to-r from-cyan-200 via-blue-200 to-teal-200 bg-clip-text text-4xl md:text-5xl font-semibold tracking-tight text-transparent leading-tight">
+              Featured Projects
+            </h2>
+            <p className="mt-4 text-slate-400 text-lg max-w-2xl mx-auto">
+              A selection of things I have been building recently – from full-stack
+              applications to mobile experiences and interactive web interfaces.
+            </p>
+          </div>
         </div>
 
         <div className="mt-10 space-y-6">

@@ -314,14 +314,16 @@ export default function UsePresenceData() {
   return (
     <section id="project" className="flex flex-col items-center justify-center py-20 px-4 w-full">
       {/* Section Header */}
-      <div className="text-center mb-12">
-        <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Interactive Work</p>
-        <h2 className="mt-3 py-2 text-slate-950 text-4xl font-black leading-tight font-sans">
-          Featured Projects
-        </h2>
-        <p className="mt-4 text-slate-900 text-lg max-w-2xl mx-auto font-sans font-medium">
-          Explore my applications through this retro 2000s desktop simulator. Use the monitor controls or folder buttons to browse.
-        </p>
+      <div className="w-full max-w-6xl mx-auto mb-16 relative z-10">
+        <div className="w-full px-4 py-8 md:py-10 rounded-3xl bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex flex-col items-center text-center">
+          <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Interactive Work</p>
+          <h2 className="mt-3 py-2 text-slate-950 text-4xl md:text-5xl font-black leading-tight font-sans">
+            Featured Projects
+          </h2>
+          <p className="mt-3 text-slate-900 text-base md:text-lg max-w-2xl mx-auto font-sans font-medium">
+            Explore my applications through this retro 2000s desktop simulator. Use the monitor controls or folder buttons to browse.
+          </p>
+        </div>
       </div>
 
       {/* Desktop CRT Monitor View (Hidden on mobile/tablet) */}
