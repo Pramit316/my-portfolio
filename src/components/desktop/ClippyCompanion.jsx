@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
 const ClippyCompanion = () => {
-  const [showBubble, setShowBubble] = useState(true);
+  const [showBubble, setShowBubble] = useState(false);
   const [menuMode, setMenuMode] = useState("main");
   const [currentTipIndex, setCurrentTipIndex] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -32,13 +32,11 @@ const ClippyCompanion = () => {
   }, []);
 
   const clippyTips = [
-    "You can drag me anywhere on the screen — even off the edges!",
     "Single-click the My Computer icon inside the monitor to view Pramit's tech specs & socials.",
     "Click the monitor's power button in the bottom bezel to turn it on or off.",
     "Click the start button in the monitor's taskbar to toggle the Project Explorer.",
     "Use the left/right arrows on the monitor casing to browse projects sequentially.",
     "The clock in the bottom right of the monitor display is synced to your computer time!",
-    "Try dragging me to a corner if I'm blocking your view. I'll stay put!",
     "You can hide my speech bubble and bring it back by clicking on me.",
   ];
 
@@ -57,10 +55,9 @@ const ClippyCompanion = () => {
       });
 
       setStatusMessage(
-        `Navigated to ${
-          targetId === "hero"
-            ? "Home"
-            : targetId.charAt(0).toUpperCase() + targetId.slice(1)
+        `Navigated to ${targetId === "hero"
+          ? "Home"
+          : targetId.charAt(0).toUpperCase() + targetId.slice(1)
         }! Need anything else?`
       );
       setMenuMode("main");
@@ -73,7 +70,7 @@ const ClippyCompanion = () => {
       const audio = new Audio(
         "https://www.soundjay.com/buttons/sounds/button-3.mp3"
       );
-      audio.play().catch(() => {});
+      audio.play().catch(() => { });
     } catch {
       // Silently ignore audio errors
     }
@@ -100,24 +97,19 @@ const ClippyCompanion = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-40 select-none font-sans">
-      <motion.div
-        drag
-        dragConstraints={dragConstraints}
-        dragMomentum={false}
-        dragElastic={0}
-        initial={{ x: windowSize.w - 220, y: windowSize.h - 260 }}
-        className="absolute pointer-events-auto flex flex-col items-center cursor-grab active:cursor-grabbing w-[80px]"
-        style={{ touchAction: "none" }}
+      <div
+        className="absolute pointer-events-auto flex flex-col items-center w-[60px]"
+        style={{ right: 16, bottom: 16 }}
       >
-        {/* XP Dialog Speech Bubble (positioned absolutely so height changes do not shift Clippy) */}
+        {/* XP Dialog Speech Bubble (positioned to the left so it stays on screen) */}
         {showBubble && (
           <div
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50 pointer-events-auto"
+            className="absolute bottom-full right-0 mb-3 z-50 pointer-events-auto"
             style={{ width: 240 }}
           >
             {/* XP Dialog Window */}
             <div
-              className="bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-2xl flex flex-col font-sans select-none overflow-hidden"
+              className="!bg-white border-[3px] border-[#0054e3] rounded-t-lg shadow-2xl flex flex-col font-sans select-none overflow-hidden"
               style={{
                 boxShadow:
                   "2px 2px 8px rgba(0, 0, 0, 0.35), inset 1px 1px 0 #fff",
@@ -127,7 +119,7 @@ const ClippyCompanion = () => {
               <div className="xp-title-bar-gradient px-1.5 py-1 flex items-center justify-between text-white font-bold text-[10px] select-none">
                 <div className="flex items-center gap-1">
                   <span className="text-[12px]">📎</span>
-                  <span className="tracking-wide">Office Assistant</span>
+                  <span className="tracking-wide">Birkhe Assistant</span>
                 </div>
                 <button
                   onClick={(e) => {
@@ -143,11 +135,11 @@ const ClippyCompanion = () => {
               </div>
 
               {/* Dialog Body */}
-              <div className="p-3 flex flex-col gap-2 border-t border-white shadow-[inset_1px_1px_0_#fff] text-[#333333]">
+              <div className="p-3 flex flex-col gap-2 border-t border-white shadow-[inset_1px_1px_0_#fff] !text-[#333333]">
                 {/* ─── MAIN MENU ─── */}
                 {menuMode === "main" && (
                   <>
-                    <p className="font-semibold text-xs leading-tight text-[#1a1a1a]">
+                    <p className="font-semibold text-xs leading-tight !text-[#1a1a1a]">
                       {statusMessage}
                     </p>
                     <div className="flex flex-col gap-1 text-[11px] mt-1">
@@ -157,7 +149,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           setMenuMode("tips");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         <span>💡</span> 1. Tips
                       </button>
@@ -167,7 +159,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           setMenuMode("shortcuts");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         <span>🔗</span> 2. Shortcuts
                       </button>
@@ -177,7 +169,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           setMenuMode("dismiss");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         <span>❌</span> 3. Don&apos;t show this again
                       </button>
@@ -205,7 +197,7 @@ const ClippyCompanion = () => {
                             (prev) => (prev + 1) % clippyTips.length
                           );
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         👉 Next Tip
                       </button>
@@ -217,7 +209,7 @@ const ClippyCompanion = () => {
                             prev === 0 ? clippyTips.length - 1 : prev - 1
                           );
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         👈 Previous Tip
                       </button>
@@ -229,7 +221,7 @@ const ClippyCompanion = () => {
                             Math.floor(Math.random() * clippyTips.length)
                           );
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         🎲 Random Tip
                       </button>
@@ -240,7 +232,7 @@ const ClippyCompanion = () => {
                             handleSound();
                             setMenuMode("main");
                           }}
-                          className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-gray-500 font-bold transition-colors w-full"
+                          className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-gray-500 font-bold transition-colors w-full"
                         >
                           ◀ Back to Main Menu
                         </button>
@@ -252,7 +244,7 @@ const ClippyCompanion = () => {
                 {/* ─── SHORTCUTS SUB-MENU ─── */}
                 {menuMode === "shortcuts" && (
                   <>
-                    <p className="font-semibold text-xs leading-tight text-[#1a1a1a]">
+                    <p className="font-semibold text-xs leading-tight !text-[#1a1a1a]">
                       Where would you like to navigate?
                     </p>
                     <div className="flex flex-col gap-0.5 text-[11px] mt-1">
@@ -262,7 +254,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           handleAction("hero");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         🏠 Go to Home
                       </button>
@@ -272,7 +264,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           handleAction("project");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         📁 View Projects
                       </button>
@@ -282,7 +274,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           handleAction("journey");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         🚀 Check Journey
                       </button>
@@ -292,7 +284,7 @@ const ClippyCompanion = () => {
                           handleSound();
                           handleAction("contact");
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         ✉️ Send Message
                       </button>
@@ -303,7 +295,7 @@ const ClippyCompanion = () => {
                             handleSound();
                             setMenuMode("main");
                           }}
-                          className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-gray-500 font-bold transition-colors w-full"
+                          className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-gray-500 font-bold transition-colors w-full"
                         >
                           ◀ Back to Main Menu
                         </button>
@@ -315,7 +307,7 @@ const ClippyCompanion = () => {
                 {/* ─── DON'T SHOW THIS AGAIN SUB-MENU ─── */}
                 {menuMode === "dismiss" && (
                   <>
-                    <p className="font-semibold text-xs leading-tight text-[#1a1a1a]">
+                    <p className="font-semibold text-xs leading-tight !text-[#1a1a1a]">
                       How would you like to configure me?
                     </p>
                     <div className="flex flex-col gap-0.5 text-[11px] mt-1">
@@ -328,7 +320,7 @@ const ClippyCompanion = () => {
                             "Click me anytime to see this menu again!"
                           );
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         🔇 Hide speech bubble
                       </button>
@@ -342,9 +334,9 @@ const ClippyCompanion = () => {
                             new CustomEvent("clippy-disabled")
                           );
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
-                        🚫 Disable Clippy companion
+                        🚫 Disable Birkhe companion
                       </button>
                       <button
                         onClick={(e) => {
@@ -356,13 +348,13 @@ const ClippyCompanion = () => {
                               const audio = new Audio(
                                 "https://www.soundjay.com/buttons/sounds/button-3.mp3"
                               );
-                              audio.play().catch(() => {});
+                              audio.play().catch(() => { });
                             } catch {
                               // ignore
                             }
                           }
                         }}
-                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-[#002c91] font-bold transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1.5 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-[#002c91] font-bold transition-colors"
                       >
                         {soundEnabled ? "🔊" : "🔇"} Sound Effects:{" "}
                         {soundEnabled ? "ON" : "OFF"}
@@ -374,7 +366,7 @@ const ClippyCompanion = () => {
                             handleSound();
                             setMenuMode("main");
                           }}
-                          className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm hover:bg-[#316ac5] hover:text-white text-gray-500 font-bold transition-colors w-full"
+                          className="flex items-center gap-1.5 px-2 py-1 text-left cursor-pointer rounded-sm !bg-[#ece9d8] hover:!bg-[#316ac5] hover:!text-white !text-gray-500 font-bold transition-colors w-full"
                         >
                           ◀ Back to Main Menu
                         </button>
@@ -386,7 +378,7 @@ const ClippyCompanion = () => {
             </div>
 
             {/* Bubble Tail (pointing down to Clippy) */}
-            <div className="flex justify-center">
+            <div className="flex justify-end pr-4">
               <div
                 className="w-0 h-0"
                 style={{
@@ -396,102 +388,36 @@ const ClippyCompanion = () => {
                 }}
               />
             </div>
-            <div className="flex justify-center -mt-[2px]">
+            <div className="flex justify-end pr-[18px] -mt-[2px]">
               <div
                 className="w-0 h-0"
                 style={{
                   borderLeft: "8px solid transparent",
                   borderRight: "8px solid transparent",
-                  borderTop: "8px solid #ece9d8",
+                  borderTop: "8px solid white",
                 }}
               />
             </div>
           </div>
         )}
 
-        {/* Clippy Body & Draggable Area */}
+        {/* Birkhe Body */}
         <div
           className="flex flex-col items-center cursor-pointer"
           onClick={toggleBubble}
         >
-          {/* Animated SVG Paperclip */}
-          <svg
-            width="75"
-            height="110"
-            viewBox="0 0 100 130"
-            className="drop-shadow-lg animate-bounce"
-            style={{ animationDuration: "3s" }}
-          >
-            {/* Paperclip Metal loops */}
-            <path
-              d="M30 90 V40 A 20 20 0 0 1 70 40 V100 A 25 25 0 0 1 20 100 V60 A 15 15 0 0 1 50 60 V95"
-              fill="none"
-              stroke="#8e9bb0"
-              strokeWidth="6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M30 90 V40 A 20 20 0 0 1 70 40 V100 A 25 25 0 0 1 20 100 V60 A 15 15 0 0 1 50 60 V95"
-              fill="none"
-              stroke="#d2d9e5"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
-            {/* Googly Eyes Background */}
-            <circle
-              cx="42"
-              cy="55"
-              r="11"
-              fill="white"
-              stroke="black"
-              strokeWidth="1.5"
-            />
-            <circle
-              cx="62"
-              cy="53"
-              r="11"
-              fill="white"
-              stroke="black"
-              strokeWidth="1.5"
-            />
-
-            {/* Pupils (with subtle shift to looking left/at content) */}
-            <circle cx="40" cy="56" r="4.5" fill="black" />
-            <circle cx="60" cy="54" r="4.5" fill="black" />
-
-            {/* Expressive Eyebrows */}
-            <path
-              d="M31 42 Q40 37 49 43"
-              fill="none"
-              stroke="black"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M55 41 Q63 36 71 40"
-              fill="none"
-              stroke="black"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-
-            {/* Cute smile */}
-            <path
-              d="M44 74 Q52 82 60 72"
-              fill="none"
-              stroke="black"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-          </svg>
-          <span className="text-[10px] text-white bg-black/40 px-1.5 py-0.5 rounded shadow mt-1">
-            Clippy (Drag Me!)
-          </span>
+          {/* Birkhe GIF */}
+          <img
+            src="/GIFs/Idle.gif"
+            alt="Birkhe"
+            width="55"
+            height="80"
+            draggable={false}
+            className="drop-shadow-lg pointer-events-none"
+            style={{ objectFit: "contain" }}
+          />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

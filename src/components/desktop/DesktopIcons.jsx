@@ -452,11 +452,12 @@ const DesktopIcons = () => {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-[999] w-[24px] h-[48px] bg-[#7b9ebd] border-[3px] border-l-0 border-[#002c91] rounded-r-md flex items-center justify-center text-white cursor-pointer select-none hover:bg-[#688aab] active:brightness-95 text-[10px] font-bold"
-        style={{ boxShadow: "3px 3px 6px rgba(0,0,0,0.2)" }}
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-[999] w-[20px] h-[40px] bg-slate-800 border-[1.5px] border-l-0 border-white/20 rounded-r-full flex items-center justify-center text-white cursor-pointer select-none hover:bg-slate-700 active:brightness-95 shadow-lg transition-all group backdrop-blur-sm"
         title={isOpen ? "Hide shortcuts" : "Show shortcuts"}
       >
-        {isOpen ? "◀" : "▶"}
+        <span className="text-[10px] pr-[2px] font-black drop-shadow-md group-hover:scale-125 transition-transform">
+          {isOpen ? "◀" : "▶"}
+        </span>
       </button>
 
       {/* Sliding icons panel */}

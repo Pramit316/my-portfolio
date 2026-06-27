@@ -6,14 +6,14 @@ const HeroSection = () => {
       id="hero"
       className="relative w-full mt-[100px] box-border px-4 py-8 md:px-8 lg:px-20 mb-8 min-h-[700px] flex items-center overflow-hidden"
     >
-      <div className="relative flex flex-col text-center max-w-7xl mx-auto md:flex-row items-center md:items-center justify-between gap-12 lg:gap-24 md:text-left w-full">
+      <div className="relative flex flex-col text-center max-w-7xl mx-auto lg:flex-row items-center justify-between gap-12 lg:gap-24 lg:text-left w-full">
         {/* Left Column: Intro text and CMD window */}
-        <div className="w-full lg:w-[65%] max-w-[720px] flex flex-col items-center md:items-start">
+        <div className="w-full lg:w-[65%] max-w-[720px] flex flex-col items-center lg:items-start">
           <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Welcome</p>
-          <h1 className="mt-2 py-2 px-1 text-slate-950 text-5xl font-black md:text-6xl leading-tight font-sans text-center md:text-left w-full">
+          <h1 className="mt-2 py-2 px-1 text-slate-950 text-5xl font-black md:text-6xl leading-tight font-sans text-center lg:text-left w-full">
             Hey, I am Pramit!
           </h1>
-          <h2 className="text-3xl mt-2 py-1 text-[#0054e3] font-bold leading-tight font-sans text-center md:text-left w-full">
+          <h2 className="text-3xl mt-2 py-1 text-[#0054e3] font-bold leading-tight font-sans text-center lg:text-left w-full">
             Software Engineer
           </h2>
           <p className="text-lg mt-4 text-slate-900 text-justify font-sans font-medium leading-relaxed">
@@ -73,7 +73,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full lg:w-[30%] flex justify-center md:justify-end mt-8 md:mt-0 flex-shrink-0"
+          className="w-full lg:w-[30%] flex justify-center lg:justify-end mt-8 lg:mt-0 flex-shrink-0"
         >
           {/* Windows XP style image viewer window */}
           <div className="relative bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-2xl flex flex-col font-sans select-none w-70 h-80 md:w-80 md:h-92 lg:w-92 lg:h-100 overflow-hidden">

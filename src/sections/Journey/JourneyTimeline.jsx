@@ -338,7 +338,7 @@ function XpDecorations() {
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 0.38 } : {}}
       transition={{ duration: 0.8, delay: 0.3 }}
-      className="pointer-events-none absolute inset-0 z-[5] overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-[5] overflow-hidden hidden md:block"
       aria-hidden="true"
     >
       {/* ── SCHOOL era ── */}

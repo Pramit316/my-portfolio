@@ -18,8 +18,10 @@ function App() {
       <div className="pointer-events-none fixed inset-0 z-0 bg-retro-desktop-dither" />
       
       {/* Desktop Background elements for larger screens */}
-      <div className="hidden xl:block">
+      <div className="hidden md:block">
         <DesktopIcons />
+      </div>
+      <div className="hidden lg:block">
         <StickyNote />
       </div>
 

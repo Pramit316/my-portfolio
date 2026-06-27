@@ -10,7 +10,7 @@ const SideMenu = ({ onClose, onScroll }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[150] md:hidden">
+    <div className="fixed inset-0 z-[150] lg:hidden">
       {/* Backdrop (click outside to close) */}
       <button
         aria-hidden="true"
