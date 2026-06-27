@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaMousePointer, FaHourglassHalf } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
@@ -7,6 +8,25 @@ const HeroSection = () => {
       className="relative w-full mt-[100px] box-border px-4 py-8 md:px-8 lg:px-20 mb-8 min-h-[700px] flex items-center overflow-hidden"
     >
       <div className="relative flex flex-col text-center max-w-7xl mx-auto lg:flex-row items-center justify-between gap-12 lg:gap-24 lg:text-left w-full">
+        {/* Floating Decorative Icons (XP Vibe) */}
+        <motion.div
+          className="absolute hidden md:block text-[#0054e3] opacity-60 z-0"
+          style={{ top: '10%', left: '-5%', transform: 'rotate(-15deg)' }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <FaMousePointer size={40} className="drop-shadow-md" />
+        </motion.div>
+
+        <motion.div
+          className="absolute hidden md:block text-[#0054e3] opacity-60 z-0"
+          style={{ bottom: '15%', right: '35%', transform: 'rotate(15deg)' }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        >
+          <FaHourglassHalf size={35} className="drop-shadow-md" />
+        </motion.div>
+
         {/* Left Column: Intro text and CMD window */}
         <div className="w-full lg:w-[65%] max-w-[720px] flex flex-col items-center lg:items-start">
           <p className="text-xs uppercase tracking-[0.35em] text-[#002c91] font-extrabold font-sans">Welcome</p>
@@ -21,8 +41,11 @@ const HeroSection = () => {
           </p>
 
           {/* CMD / Neofetch Terminal Window */}
+          {/* XP Status Badge */}
+
+
           <div
-            className="mt-8 bg-black text-white border-[2px] border-t-white border-l-white border-b-gray-600 border-r-gray-600 rounded-t shadow-lg flex flex-col text-[11px] leading-relaxed w-full max-w-full overflow-hidden select-none"
+            className="mt-5 bg-black text-white border-[2px] border-t-white border-l-white border-b-gray-600 border-r-gray-600 rounded-t shadow-[0_8px_32px_rgba(0,44,145,0.18),0_2px_8px_rgba(0,0,0,0.12)] flex flex-col text-[11px] leading-relaxed w-full max-w-full overflow-hidden select-none"
             style={{ fontFamily: '"Lucida Console", "Courier New", Courier, Monaco, monospace' }}
           >
             {/* Title bar */}
@@ -76,7 +99,7 @@ const HeroSection = () => {
           className="w-full lg:w-[30%] flex justify-center lg:justify-end mt-8 lg:mt-0 flex-shrink-0"
         >
           {/* Windows XP style image viewer window */}
-          <div className="relative bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-2xl flex flex-col font-sans select-none w-70 h-80 md:w-80 md:h-92 lg:w-92 lg:h-100 overflow-hidden">
+          <div className="relative bg-[#ece9d8] border-[3px] border-[#0054e3] rounded-t-lg shadow-[0_12px_40px_rgba(0,44,145,0.22),0_4px_12px_rgba(0,0,0,0.15)] flex flex-col font-sans select-none w-70 h-80 md:w-80 md:h-92 lg:w-92 lg:h-100 overflow-hidden">
             {/* XP Title bar */}
             <div className="xp-title-bar-gradient px-2 py-1 flex items-center justify-between text-white font-bold text-xs select-none">
               <div className="flex items-center gap-1.5 text-left">
