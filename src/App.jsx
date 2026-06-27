@@ -8,8 +8,35 @@ import DesktopIcons from "./components/desktop/DesktopIcons.jsx";
 import ClippyCompanion from "./components/desktop/ClippyCompanion.jsx";
 import XPBackground from "./components/common/XPBackground.jsx";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import Lenis from "lenis";
 
 function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easeOutQuint
+      direction: 'vertical', // vertical scrolling
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <>
       {/* Main page content */}
